@@ -33,6 +33,7 @@ data = SubResource("Resource_ww6kv")
 disable_after_interact = true
 
 [node name="TapHitBox" parent="CanvasLayer/Root" index="0"]
+visible = false
 offset_left = -128.0
 offset_top = -131.0
 offset_right = 140.0

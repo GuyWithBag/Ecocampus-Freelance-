@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8rw1leee5u7c"]
+[gd_scene load_steps=10 format=3 uid="uid://c8rw1leee5u7c"]
 
 [ext_resource type="PackedScene" uid="uid://j2jy5p1ojh58" path="res://addons/gui_manager/nodes/gui/gui/gui.tscn" id="1_lffhb"]
 [ext_resource type="Script" path="res://nodes/gui/video_cutscene_player/video_cutscene_player.gd" id="2_qvjn5"]
 [ext_resource type="PackedScene" uid="uid://ckqkghsyrqgoi" path="res://addons/node_components/nodes/components/lerp_components/color_property_lerp_component/color_property_lerp_component.tscn" id="3_m2eh5"]
 [ext_resource type="Script" path="res://addons/node_components/scripts/arguments/tween_arguments.gd" id="4_sggck"]
 [ext_resource type="PackedScene" uid="uid://d07384jfiolfg" path="res://nodes/components/audio_bus_volume_slider/audio_bus_volume_slider.tscn" id="5_uyk42"]
+[ext_resource type="PackedScene" uid="uid://dggdvwjvdrmkh" path="res://nodes/gui/buttons/medium_wooden_button/medium_wooden_button.tscn" id="6_g3rpe"]
 
 [sub_resource type="VideoStreamTheora" id="VideoStreamTheora_cmh54"]
 file = "res://assets/videos/intro_cutscene.ogv"
@@ -87,3 +88,24 @@ interpolation = SubResource("Resource_oathq")
 
 [node name="MusicVolumeSlider" parent="." index="6" instance=ExtResource("5_uyk42")]
 audio_bus = 1
+
+[node name="SkipButton" parent="." index="7" instance=ExtResource("6_g3rpe")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -361.0
+offset_top = -190.0
+offset_right = -118.0
+offset_bottom = -93.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" parent="SkipButton" index="1"]
+text = "Skip"
+
+[connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]
+
+[editable path="SkipButton"]

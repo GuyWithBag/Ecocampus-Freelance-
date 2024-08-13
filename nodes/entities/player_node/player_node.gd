@@ -1,4 +1,7 @@
 @tool
+
+## DO NOT PUT PLAYER DATA IN PLAYERNODE
+
 extends EntityNode
 class_name PlayerNode
 
@@ -92,7 +95,8 @@ func set_data(value: Entity) -> void:
 	if data: 
 		if Engine.is_editor_hint(): 
 			return
-		data.gender_changed.connect(_on_gender_changed)
+		if data.gender_changed.is_connected(_on_gender_changed): 
+			data.gender_changed.connect(_on_gender_changed)
 		gender = data.gender
 
 

@@ -28,15 +28,15 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32
 outlines = Array[PackedVector2Array]([PackedVector2Array(805, 569, 1041, 654, 1381, 741, 1449, 702, 1813, 787, 1809, 1042, -111, 1039, -110, 788, 47, 739, 207, 690, 677, 624, 683, 581)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
-[sub_resource type="Resource" id="Resource_1oghg"]
+[sub_resource type="Resource" id="Resource_y0e3u"]
 script = ExtResource("17_o4j3b")
 format = "[outline_size=4][outline_color=BLACK][b][font_size=38]%s[/font_size][/b]
 [font_size=28][b]Type:[/b] %s[/font_size]
 [font_size=28][b]Environmental Impact:[/b] %s[/font_size]"
 
-[sub_resource type="Resource" id="Resource_s27yb"]
+[sub_resource type="Resource" id="Resource_tniid"]
 script = ExtResource("18_ebn58")
-format = SubResource("Resource_1oghg")
+format = SubResource("Resource_y0e3u")
 texts = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_jo488"]
@@ -75,7 +75,6 @@ stretch_mode = 5
 [node name="PlayerNode" parent="Entities/Living" index="0" instance=ExtResource("3_q43q1")]
 position = Vector2(1332, 999)
 scale = Vector2(1.2137, 1.2137)
-animate_y_direction_move = true
 
 [node name="DoctorMadrigal" parent="Entities/Living" index="1" instance=ExtResource("4_17uen")]
 position = Vector2(870, 814)
@@ -123,7 +122,7 @@ disabled = true
 [node name="UseToolToEnableEntity" parent="Entities/NonLiving/Faucet" index="10" node_paths=PackedStringArray("entity_to_enable") instance=ExtResource("16_jyrv2")]
 position = Vector2(-7.84204, -25.0947)
 rotation = -3.14159
-scale = Vector2(0.655972, 0.655972)
+scale = Vector2(0.655971, 0.655971)
 entity_to_enable = NodePath("..")
 
 [node name="Faucet2" parent="Entities/NonLiving" index="3" instance=ExtResource("12_n4yv5")]
@@ -151,7 +150,7 @@ entity_to_enable = NodePath("..")
 [node name="Ladder" parent="Entities/NonLiving" index="5" instance=ExtResource("16_xb0mg")]
 position = Vector2(253, 974)
 scale = Vector2(1.29748, 1.29748)
-interact_description = SubResource("Resource_s27yb")
+interact_description = SubResource("Resource_tniid")
 
 [node name="TwoPoint5DSpaceSimulator" parent="Scripts" index="0"]
 scale_size_offset = 140

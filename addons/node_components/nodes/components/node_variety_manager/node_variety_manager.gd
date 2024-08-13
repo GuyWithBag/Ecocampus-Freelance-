@@ -93,4 +93,3 @@ static func name_modifier_setter(this: Node, value: String) -> String:
 	if this.variety_index != this.node_variety_manager.index: 
 		this.variety_index = this.node_variety_manager.index
 	return _variety_name
-

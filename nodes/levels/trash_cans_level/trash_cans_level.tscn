@@ -44,7 +44,6 @@ flip_h = true
 
 [node name="MainCamera" parent="Cameras" index="0" node_paths=PackedStringArray("follow_node")]
 position = Vector2(970, 513)
-offset = Vector2(0, 0)
 editor_draw_limits = true
 follow_node = NodePath("../../Entities/Living/PlayerNode")
 
@@ -60,6 +59,7 @@ stretch_mode = 5
 
 [node name="PlayerNode" parent="Entities/Living" index="0" instance=ExtResource("6_ma7va")]
 position = Vector2(-433, 670)
+animate_y_direction_move = true
 
 [node name="TrashCans" type="Node2D" parent="Entities/NonLiving" index="0"]
 position = Vector2(1546, 872)

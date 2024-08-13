@@ -56,3 +56,7 @@ func _deactivated() -> void:
 	fade_out.play()
 	#get_tree().paused = true
 	video_stream_player.paused = true
+
+
+func _on_skip_button_pressed() -> void:
+	GUIManager.set_gui_active(VideoCutscenePlayer.this(), false)

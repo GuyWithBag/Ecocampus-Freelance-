@@ -12,15 +12,15 @@
 [ext_resource type="AudioStream" uid="uid://dnipkpbpk6h6n" path="res://assets/audio/ui/pickup_item.wav" id="9_kjmyf"]
 [ext_resource type="PackedScene" uid="uid://cnsvmjc5ytto2" path="res://nodes/components/on_visible_then_scale/on_visible_then_scale.tscn" id="9_rjlm8"]
 
-[sub_resource type="Resource" id="Resource_sh1ev"]
+[sub_resource type="Resource" id="Resource_6ekw5"]
 script = ExtResource("5_hjcei")
 format = "[outline_size=4][outline_color=BLACK][b][font_size=38]%s[/font_size][/b]
 [font_size=28][b]Type:[/b] %s[/font_size]
 [font_size=28][b]Environmental Impact:[/b] %s[/font_size]"
 
-[sub_resource type="Resource" id="Resource_su8km"]
+[sub_resource type="Resource" id="Resource_53h3x"]
 script = ExtResource("6_np3jd")
-format = SubResource("Resource_sh1ev")
+format = SubResource("Resource_6ekw5")
 texts = Array[String]([])
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ukjcl"]
@@ -45,8 +45,8 @@ bus = &"SFX"
 [node name="PickUppableEntity" groups=["QuestEntity"] instance=ExtResource("1_d4ii6")]
 script = ExtResource("2_a2l0a")
 need_quest_before_enabled = null
-only_display_interact_dialog_once = true
-interact_description = SubResource("Resource_su8km")
+display_interact_dialog = false
+interact_description = SubResource("Resource_53h3x")
 
 [node name="OnPressedApplyMaterialToNode" parent="CanvasLayer/Root/TapHitBox" index="0" node_paths=PackedStringArray("apply_to_node") instance=ExtResource("7_cgy4r")]
 material = SubResource("ShaderMaterial_ukjcl")

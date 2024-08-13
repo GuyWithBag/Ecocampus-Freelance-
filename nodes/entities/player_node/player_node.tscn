@@ -506,6 +506,7 @@ collision_layer = 2
 collision_mask = 16
 script = ExtResource("2_6c1ia")
 gender = 0
+animate_y_direction_move = true
 move_to_tap = NodePath("Components/Movement/MoveToTapPathFindMovement")
 mouse_position = NodePath("Components/Movement/MousePositionComponent")
 cosmetic_equipper_component = NodePath("CosmeticEquipperComponent")
@@ -517,6 +518,9 @@ animation_player = NodePath("AnimationPlayer")
 
 [node name="Root" parent="CanvasLayer" index="0"]
 scale = Vector2(0.9, 0.9)
+
+[node name="TapHitBox" parent="CanvasLayer/Root" index="0"]
+visible = false
 
 [node name="Left" parent="StateChart/Root/Enabled/Animation" index="0"]
 initial_state = NodePath("Idle")

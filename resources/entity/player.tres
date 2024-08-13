@@ -43,4 +43,4 @@ female_speaker_talk_sprite = SubResource("AtlasTexture_ihyar")
 gender = 0
 facing_left = false
 group = "Entity"
-save_as_resource_path = false
+save_as_resource_path = true
