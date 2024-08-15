@@ -63,10 +63,9 @@ func _save_properties() -> PackedStringArray:
 		"inventory", 
 		"faucets_turned_off", 
 		"lights_turned_off", 
-		"trash_can_items"
+		"trash_can_items", 
 	]
 	arr.append_array(super._save_properties())
-	
 	return arr
 	
 	

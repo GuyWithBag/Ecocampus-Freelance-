@@ -31,6 +31,7 @@ save_properties_as_resource_path = PackedStringArray()
 script = ExtResource("13_6oemm")
 value = "6519512559362500665"
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f3ody"]
 streams_count = 3
@@ -518,9 +519,6 @@ animation_player = NodePath("AnimationPlayer")
 
 [node name="Root" parent="CanvasLayer" index="0"]
 scale = Vector2(0.9, 0.9)
-
-[node name="TapHitBox" parent="CanvasLayer/Root" index="0"]
-visible = false
 
 [node name="Left" parent="StateChart/Root/Enabled/Animation" index="0"]
 initial_state = NodePath("Idle")

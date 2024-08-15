@@ -31,7 +31,7 @@ func to_dict(from_object: Object) -> Dictionary:
 			if property in save_properties_as_resource_path: 
 				data[property] = value.resource_path
 				continue
-			elif value.save_as_resource_path: 
+			elif value.save_as_resource_path && !(from_object.name in value.exclude_save_as_resource_path_on): 
 				data[property] = value.resource_path
 			else: 
 				data[property] = value.to_dict()

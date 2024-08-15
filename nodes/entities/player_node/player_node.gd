@@ -10,6 +10,7 @@ class_name PlayerNode
 		gender = value
 		if !is_node_ready(): 
 			await ready
+		printerr(gender)
 		if gender == GlobalEnums.Gender.MALE: 
 			node_variety_manager.index = 1
 		else: 
@@ -95,7 +96,7 @@ func set_data(value: Entity) -> void:
 	if data: 
 		if Engine.is_editor_hint(): 
 			return
-		if data.gender_changed.is_connected(_on_gender_changed): 
+		if !data.gender_changed.is_connected(_on_gender_changed): 
 			data.gender_changed.connect(_on_gender_changed)
 		gender = data.gender
 

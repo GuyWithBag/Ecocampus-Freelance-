@@ -6,6 +6,7 @@ class_name SaveableResource
 ## 	properties = ["scene_file", "items"] 
 ## 	super._init() 
 @export var save_as_resource_path: bool = false
+@export var exclude_save_as_resource_path_on: Array[String]
 
 var save: PropertiesToSave
 #var use_script_resource_path_as_key: bool
