@@ -36,6 +36,9 @@ var trash_can_items: int
 
 func _init() -> void: 
 	super._init()
+	if Engine.is_editor_hint(): 
+		return
+			
 	save.save_properties_as_resource_path = [
 		"current_cosmetic"
 	]

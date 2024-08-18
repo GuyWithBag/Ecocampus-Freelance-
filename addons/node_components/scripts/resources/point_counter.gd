@@ -1,4 +1,5 @@
-@icon("res://addons/easy_rpg_maker/class_icons/points-counter.png")
+@icon("res://addons/node_components/class_icons/points-counter.png")
+@tool
 extends SaveableResource
 class_name PointCounter
 

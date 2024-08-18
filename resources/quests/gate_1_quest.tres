@@ -14,12 +14,14 @@ description = "Plastic Bottles"
 condition = ExtResource("3_ol54o")
 hide_counter_in_gui = false
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_516h2"]
 script = ExtResource("6_f4bdd")
 picked_up_item = ExtResource("5_evhrl")
 maximum_points = 5
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_ffh07"]
 script = ExtResource("3_67lix")
@@ -27,6 +29,7 @@ description = "Aluminum Cans"
 condition = SubResource("Resource_516h2")
 hide_counter_in_gui = false
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [resource]
 script = ExtResource("1_1ihav")

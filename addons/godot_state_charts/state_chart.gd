@@ -24,8 +24,15 @@ signal event_received(event:StringName)
 ## state chart debugger in the editor.
 @export var track_in_editor:bool = false
 
+## Initial values for the expression properties. These properties can be used in expressions, e.g
+## for guards or transition delays. It is recommended to set an initial value for each property
+## you use in an expression to ensure that this expression is always valid. If you don't set
+## an initial value, some expressions may fail to be evaluated if they use a property that has
+## not been set yet.
+@export var initial_expression_properties:Dictionary = {}
+
 ## The root state of the state chart.
-var _state:State = null
+var _state:StateChartState = null
 
 ## This dictonary contains known properties used in expression guards. Use the 
 ## [method set_expression_property] to add properties to this dictionary.
@@ -60,12 +67,20 @@ func _ready() -> void:
 
 	# check if the child is a state
 	var child:Node = get_child(0)
-	if not child is State:
+	if not child is StateChartState:
 		push_error("StateMachine's child must be a State")
 		return
+	
+	# set the initial expression properties
+	if initial_expression_properties != null:
+		for key in initial_expression_properties.keys():
+			if not key is String and not key is StringName:
+				push_error("Expression property names must be strings. Ignoring initial expression property with key ", key)
+				continue
+			_expression_properties[key] = initial_expression_properties[key]
 
 	# initialize the state machine
-	_state = child as State
+	_state = child as StateChartState
 	_state._state_init()
 
 	# enter the state
@@ -111,7 +126,13 @@ func set_expression_property(name:StringName, value) -> void:
 	_property_change_pending = true
 	_run_changes()
 		
-		
+
+## Returns the value of a previously set expression property. If the property does not exist, the default value
+## will be returned.
+func get_expression_property(name:StringName, default:Variant = null) -> Variant:
+	return _expression_properties.get(name, default)
+
+
 func _run_changes() -> void:
 	if _locked_down:
 		return
@@ -138,7 +159,7 @@ func _run_changes() -> void:
 ## Allows states to queue a transition for running. This will eventually run the transition
 ## once all currently running transitions have finished. States should call this method
 ## when they want to transition away from themselves. 
-func _run_transition(transition:Transition, source:State) -> void:
+func _run_transition(transition:Transition, source:StateChartState) -> void:
 	# if we are currently inside of a transition, queue it up. This can happen
 	# if a state has an automatic transition on enter, in which case we want to
 	# finish the current transition before starting a new one.
@@ -152,17 +173,24 @@ func _run_transition(transition:Transition, source:State) -> void:
 	# if for some reason the state no longer is active, ignore the transition	
 	_do_run_transition(transition, source)
 	
+	var execution_count := 1
+	
 	# if we still have transitions
 	while _queued_transitions.size() > 0:
 		var next_transition_entry = _queued_transitions.pop_front()
 		var next_transition = next_transition_entry.keys()[0]
 		var next_transition_source = next_transition_entry[next_transition]
 		_do_run_transition(next_transition, next_transition_source)
-
+		execution_count += 1
+	
+		if execution_count > 100:
+			push_error("Infinite loop detected in transitions. Aborting. The state chart is now in an invalid state and no longer usable.")
+			break
+	
 	_transitions_processing_active = false
 
 ## Runs the transition. Used internally by the state chart, do not call this directly.	
-func _do_run_transition(transition:Transition, source:State):
+func _do_run_transition(transition:Transition, source:StateChartState):
 	if source.active:
 		# Notify interested parties that the transition is about to be taken
 		transition.taken.emit()
@@ -171,7 +199,7 @@ func _do_run_transition(transition:Transition, source:State):
 		_warn_not_active(transition, source)	
 
 
-func _warn_not_active(transition:Transition, source:State):
+func _warn_not_active(transition:Transition, source:StateChartState):
 	push_warning("Ignoring request for transitioning from ", source.name, " to ", transition.to, " as the source state is no longer active. Check whether your trigger multiple state changes within a single frame.")
 
 
@@ -194,6 +222,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 		warnings.append("StateChart must have exactly one child")
 	else:
 		var child:Node = get_child(0)
-		if not child is State:
+		if not child is StateChartState:
 			warnings.append("StateChart's child must be a State")
 	return warnings

@@ -274,7 +274,7 @@ func clone() -> Inventory:
 	
 	inventory.print_color.disabled = true
 	for item_stack: ItemStack in items: 
-		inventory.add_item(ItemStack.from_item_stack(item_stack, owner))
+		inventory.add_item(ItemStack.from_item_stack(item_stack, self))
 	inventory.print_color.disabled = false
 	
 	return inventory

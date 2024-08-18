@@ -415,6 +415,10 @@ func get_line(resource: DialogueResource, key: String, extra_game_states: Array)
 		if line.next_id in resource.titles.values():
 			passed_title.emit(resource.titles.find_key(line.next_id))
 
+		# If the responses come from a snippet then we need to come back here afterwards
+		if next_line.type == DialogueConstants.TYPE_GOTO and next_line.is_snippet:
+			id_trail = "|" + next_line.next_id_after + id_trail
+
 		# If the next line is a title then check where it points to see if that is a set of responses.
 		if next_line.type == DialogueConstants.TYPE_GOTO and resource.lines.has(next_line.next_id):
 			next_line = resource.lines.get(next_line.next_id)
@@ -660,7 +664,7 @@ func get_state_value(property: String, extra_game_states: Array):
 			if class_data.get(&"class") == property:
 				return load(class_data.path).new()
 
-	show_error_for_missing_state_value(DialogueConstants.translate(&"runtime.property_not_found").format({ property = property, states = str(get_game_states(extra_game_states)) }))
+	show_error_for_missing_state_value(DialogueConstants.translate(&"runtime.property_not_found").format({ property = property, states = _get_state_shortcut_names(extra_game_states) }))
 
 
 # Set a value on the current scene or game state
@@ -675,9 +679,16 @@ func set_state_value(property: String, value, extra_game_states: Array) -> void:
 			return
 
 	if property.to_snake_case() != property:
-		show_error_for_missing_state_value(DialogueConstants.translate(&"runtime.property_not_found_missing_export").format({ property = property, states = str(get_game_states(extra_game_states)) }))
+		show_error_for_missing_state_value(DialogueConstants.translate(&"runtime.property_not_found_missing_export").format({ property = property, states = _get_state_shortcut_names(extra_game_states) }))
 	else:
-		show_error_for_missing_state_value(DialogueConstants.translate(&"runtime.property_not_found").format({ property = property, states = str(get_game_states(extra_game_states)) }))
+		show_error_for_missing_state_value(DialogueConstants.translate(&"runtime.property_not_found").format({ property = property, states = _get_state_shortcut_names(extra_game_states) }))
+
+
+# Get the list of state shortcut names
+func _get_state_shortcut_names(extra_game_states: Array) -> String:
+	var states = get_game_states(extra_game_states)
+	states.erase(_autoloads)
+	return ", ".join(states.map(func(s): return "\"%s\"" % (s.name if "name" in s else s)))
 
 
 # Collapse any expressions
@@ -793,7 +804,7 @@ func resolve(tokens: Array, extra_game_states: Array):
 
 				show_error_for_missing_state_value(DialogueConstants.translate(&"runtime.method_not_found").format({
 					method = args[0] if function_name in ["call", "call_deferred"] else function_name,
-					states = str(get_game_states(extra_game_states))
+					states = _get_state_shortcut_names(extra_game_states)
 				}), not found)
 
 		elif token.type == DialogueConstants.TOKEN_DICTIONARY_REFERENCE:
@@ -1207,7 +1218,7 @@ func resolve_signal(args: Array, extra_game_states: Array):
 			return
 
 	# The signal hasn't been found anywhere
-	show_error_for_missing_state_value(DialogueConstants.translate(&"runtime.signal_not_found").format({ signal_name = args[0], states = str(get_game_states(extra_game_states)) }))
+	show_error_for_missing_state_value(DialogueConstants.translate(&"runtime.signal_not_found").format({ signal_name = args[0], states = _get_state_shortcut_names(extra_game_states) }))
 
 
 func get_method_info_for(thing, method: String) -> Dictionary:

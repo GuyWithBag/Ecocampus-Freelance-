@@ -501,7 +501,7 @@ _data = {
 "walk_right": SubResource("Animation_kkt17")
 }
 
-[node name="PlayerNode" node_paths=PackedStringArray("move_to_tap", "mouse_position", "cosmetic_equipper_component", "path_find_movement_component", "y_direction_variety", "walk_state", "animation_player") groups=["Player"] instance=ExtResource("1_hoap6")]
+[node name="PlayerNode" node_paths=PackedStringArray("move_to_tap", "mouse_position", "cosmetic_equipper_component", "path_find_movement_component", "y_direction_variety", "walk_state") groups=["Player"] instance=ExtResource("1_hoap6")]
 scale = Vector2(0.9, 0.9)
 collision_layer = 2
 collision_mask = 16
@@ -514,14 +514,18 @@ cosmetic_equipper_component = NodePath("CosmeticEquipperComponent")
 path_find_movement_component = NodePath("Components/Movement/PathFindMovementComponent")
 y_direction_variety = NodePath("Components/YDirectionVariety")
 walk_state = NodePath("StateChart/Root/Enabled/Mobility/Walk")
-data = ExtResource("4_qvtbh")
-animation_player = NodePath("AnimationPlayer")
 
 [node name="Root" parent="CanvasLayer" index="0"]
 scale = Vector2(0.9, 0.9)
 
+[node name="OnDisabled" parent="StateChart/Root/Enabled" index="0"]
+delay_in_seconds = "0.0"
+
 [node name="Left" parent="StateChart/Root/Enabled/Animation" index="0"]
 initial_state = NodePath("Idle")
+
+[node name="OnRight" parent="StateChart/Root/Enabled/Animation/Left" index="0"]
+delay_in_seconds = "0.0"
 
 [node name="Idle" type="Node" parent="StateChart/Root/Enabled/Animation/Left" index="1"]
 script = ExtResource("3_gwwov")
@@ -532,6 +536,7 @@ animation_name = &"idle_left"
 script = ExtResource("4_3xned")
 to = NodePath("../../Walk")
 event = &"walk"
+delay_in_seconds = "0.0"
 
 [node name="Walk" type="Node" parent="StateChart/Root/Enabled/Animation/Left" index="2"]
 script = ExtResource("3_gwwov")
@@ -542,9 +547,13 @@ animation_name = &"walk_left"
 script = ExtResource("4_3xned")
 to = NodePath("../../Idle")
 event = &"idle"
+delay_in_seconds = "0.0"
 
 [node name="Right" parent="StateChart/Root/Enabled/Animation" index="1"]
 initial_state = NodePath("Idle")
+
+[node name="OnLeft" parent="StateChart/Root/Enabled/Animation/Right" index="0"]
+delay_in_seconds = "0.0"
 
 [node name="Idle" type="Node" parent="StateChart/Root/Enabled/Animation/Right" index="1"]
 script = ExtResource("3_gwwov")
@@ -555,6 +564,7 @@ animation_name = &"idle_right"
 script = ExtResource("4_3xned")
 to = NodePath("../../Walk")
 event = &"walk"
+delay_in_seconds = "0.0"
 
 [node name="Walk" type="Node" parent="StateChart/Root/Enabled/Animation/Right" index="2"]
 script = ExtResource("3_gwwov")
@@ -565,11 +575,13 @@ animation_name = &"walk_right"
 script = ExtResource("4_3xned")
 to = NodePath("../../Idle")
 event = &"idle"
+delay_in_seconds = "0.0"
 
 [node name="OnWalk" type="Node" parent="StateChart/Root/Enabled/Mobility/Idle" index="0"]
 script = ExtResource("4_3xned")
 to = NodePath("../../Walk")
 event = &"walk"
+delay_in_seconds = "0.0"
 
 [node name="Walk" type="Node" parent="StateChart/Root/Enabled/Mobility" index="1"]
 script = ExtResource("6_ae0yd")
@@ -578,6 +590,7 @@ script = ExtResource("6_ae0yd")
 script = ExtResource("4_3xned")
 to = NodePath("../../Idle")
 event = &"idle"
+delay_in_seconds = "0.0"
 
 [node name="TapState" type="Node" parent="StateChart/Root/Enabled" index="3"]
 script = ExtResource("5_44w7h")
@@ -590,6 +603,7 @@ script = ExtResource("6_ae0yd")
 script = ExtResource("4_3xned")
 to = NodePath("../../CannotTap")
 event = &"cannot_tap"
+delay_in_seconds = "0.0"
 
 [node name="CannotTap" type="Node" parent="StateChart/Root/Enabled/TapState" index="1"]
 script = ExtResource("6_ae0yd")
@@ -598,6 +612,10 @@ script = ExtResource("6_ae0yd")
 script = ExtResource("4_3xned")
 to = NodePath("../../CanTap")
 event = &"can_tap"
+delay_in_seconds = "0.0"
+
+[node name="OnEnabled" parent="StateChart/Root/Disabled" index="0"]
+delay_in_seconds = "0.0"
 
 [node name="MoveToTapPathFindMovement" parent="Components/Movement" index="0" node_paths=PackedStringArray("node", "mouse_position", "path_find_move_component") instance=ExtResource("7_jfgwu")]
 node = NodePath("../../..")

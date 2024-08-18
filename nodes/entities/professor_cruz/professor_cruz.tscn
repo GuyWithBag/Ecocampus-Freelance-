@@ -20,6 +20,36 @@ offset_bottom = 34.0
 position = Vector2(-0.5, -9.25)
 shape = SubResource("RectangleShape2D_iliwx")
 
+[node name="OnDisabled" parent="StateChart/Root/Enabled" index="0"]
+delay_in_seconds = "0.0"
+
+[node name="OnRight" parent="StateChart/Root/Enabled/Animation/Left" index="0"]
+delay_in_seconds = "0.0"
+
+[node name="OnWalk" parent="StateChart/Root/Enabled/Animation/Left/Idle" index="0"]
+delay_in_seconds = "0.0"
+
+[node name="OnIdle" parent="StateChart/Root/Enabled/Animation/Left/Walk" index="0"]
+delay_in_seconds = "0.0"
+
+[node name="OnLeft" parent="StateChart/Root/Enabled/Animation/Right" index="0"]
+delay_in_seconds = "0.0"
+
+[node name="OnWalk" parent="StateChart/Root/Enabled/Animation/Right/Idle" index="0"]
+delay_in_seconds = "0.0"
+
+[node name="OnIdle" parent="StateChart/Root/Enabled/Animation/Right/Walk" index="0"]
+delay_in_seconds = "0.0"
+
+[node name="OnWalk" parent="StateChart/Root/Enabled/Mobility/Idle" index="0"]
+delay_in_seconds = "0.0"
+
+[node name="Idle" parent="StateChart/Root/Enabled/Mobility/Walk" index="0"]
+delay_in_seconds = "0.0"
+
+[node name="OnEnabled" parent="StateChart/Root/Disabled" index="0"]
+delay_in_seconds = "0.0"
+
 [node name="ShadowCircle" parent="Sprites" index="0"]
 position = Vector2(-6.8, -1)
 

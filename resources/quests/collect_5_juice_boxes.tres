@@ -1,29 +1,71 @@
-[gd_resource type="Resource" script_class="EcoQuest" load_steps=11 format=3 uid="uid://dssjoomyx6k2y"]
+[gd_resource type="Resource" script_class="EcoQuest" load_steps=14 format=3 uid="uid://dssjoomyx6k2y"]
 
 [ext_resource type="Script" path="res://scripts/resources/eco_quest.gd" id="1_dphro"]
 [ext_resource type="Resource" uid="uid://bhpm0w4yit8bj" path="res://resources/items/scissors.tres" id="1_ofut5"]
 [ext_resource type="Script" path="res://scripts/resources/item_stack.gd" id="2_pbjl8"]
 [ext_resource type="Script" path="res://scripts/resources/eco_quest_task.gd" id="2_ph21e"]
+[ext_resource type="Script" path="res://addons/node_components/scripts/resources/point_counter.gd" id="3_it31r"]
 [ext_resource type="Resource" uid="uid://dla73tgx4t3cn" path="res://resources/items/juice_box.tres" id="3_qtip6"]
 [ext_resource type="Script" path="res://scripts/resources/eco_quest_task_conditions/picked_up_items_task_condition.gd" id="4_1u4j2"]
 
+[sub_resource type="Resource" id="Resource_1tl22"]
+script = ExtResource("3_it31r")
+starting_value = 1.0
+minimum = 0.0
+maximum = 5.0
+cant_be_added = false
+cant_be_subtracted = false
+when_maximum_stay = true
+when_minmum_stay = false
+reset_after_maximum_exceeded = false
+reset_after_minimum_exceeded = false
+reset_after_maximum_hit = false
+reset_after_minimum_hit = false
+rounded_off = false
+disabled = false
+save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
+
 [sub_resource type="Resource" id="Resource_bk3w0"]
 script = ExtResource("2_pbjl8")
+stack = SubResource("Resource_1tl22")
 model = ExtResource("1_ofut5")
 stack_starting_value = 1.0
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
+
+[sub_resource type="Resource" id="Resource_6me16"]
+script = ExtResource("3_it31r")
+starting_value = 5.0
+minimum = 0.0
+maximum = 5.0
+cant_be_added = false
+cant_be_subtracted = false
+when_maximum_stay = true
+when_minmum_stay = false
+reset_after_maximum_exceeded = false
+reset_after_minimum_exceeded = false
+reset_after_maximum_hit = false
+reset_after_minimum_hit = false
+rounded_off = false
+disabled = false
+save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_us23y"]
 script = ExtResource("2_pbjl8")
+stack = SubResource("Resource_6me16")
 model = ExtResource("3_qtip6")
 stack_starting_value = 5.0
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_roggl"]
 script = ExtResource("4_1u4j2")
 picked_up_item = ExtResource("3_qtip6")
 maximum_points = 5
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_p4lb1"]
 script = ExtResource("2_ph21e")
@@ -31,6 +73,7 @@ description = "Collect 5 Juice Boxes"
 condition = SubResource("Resource_roggl")
 hide_counter_in_gui = false
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [resource]
 script = ExtResource("1_dphro")

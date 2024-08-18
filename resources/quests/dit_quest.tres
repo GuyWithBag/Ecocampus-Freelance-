@@ -11,6 +11,7 @@
 script = ExtResource("3_760tr")
 maximum_points = 1
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_1w7kg"]
 script = ExtResource("2_0xajk")
@@ -18,11 +19,13 @@ description = "Lights"
 condition = SubResource("Resource_j8121")
 hide_counter_in_gui = false
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_wi44q"]
 script = ExtResource("5_taodf")
 maximum_points = 4
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_5qetw"]
 script = ExtResource("2_0xajk")
@@ -30,6 +33,7 @@ description = "Turn off all faucets"
 condition = SubResource("Resource_wi44q")
 hide_counter_in_gui = false
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [resource]
 script = ExtResource("1_2jeuv")

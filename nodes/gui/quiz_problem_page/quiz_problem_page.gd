@@ -3,7 +3,7 @@ extends GUI
 class_name QuizProblemPage
 
 signal quiz_completed
-signal correctly_answered
+#signal correctly_answered
 
 @export var quiz_attempt: QuizAttempt: 
 	set(value): 

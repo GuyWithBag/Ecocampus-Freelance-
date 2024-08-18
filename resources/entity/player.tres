@@ -20,7 +20,7 @@ script = ExtResource("3_8s41h")
 items = Array[ExtResource("3_h22ir")]([])
 max_items = 8
 save_as_resource_path = false
-exclude_save_as_resource_path_on = null
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k4np1"]
 atlas = ExtResource("4_bho86")
@@ -45,4 +45,4 @@ gender = 0
 facing_left = false
 group = "Entity"
 save_as_resource_path = false
-exclude_save_as_resource_path_on = null
+exclude_save_as_resource_path_on = Array[String]([])

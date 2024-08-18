@@ -14,6 +14,7 @@
 script = ExtResource("7_w83j3")
 value = "3484743336539762445"
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [node name="TrashCansLevel" instance=ExtResource("1_4fkii")]
 disable_player_tap_navigation = true
@@ -40,6 +41,7 @@ trash_cans = [NodePath("../../../Entities/NonLiving/TrashCans/BioDegradableTrash
 [node name="PlayerSpriteDisplay" parent="Environment" index="0" instance=ExtResource("2_xrh1o")]
 position = Vector2(1006, 666)
 scale = Vector2(1.86243, 1.86243)
+texture = null
 flip_h = true
 
 [node name="MainCamera" parent="Cameras" index="0" node_paths=PackedStringArray("follow_node")]
@@ -59,7 +61,6 @@ stretch_mode = 5
 
 [node name="PlayerNode" parent="Entities/Living" index="0" instance=ExtResource("6_ma7va")]
 position = Vector2(-433, 670)
-animate_y_direction_move = true
 
 [node name="TrashCans" type="Node2D" parent="Entities/NonLiving" index="0"]
 position = Vector2(1546, 872)
@@ -67,7 +68,7 @@ scale = Vector2(0.752704, 0.752704)
 
 [node name="BioDegradableTrashcan" parent="Entities/NonLiving/TrashCans" index="0" instance=ExtResource("4_7mhfn")]
 position = Vector2(-312, -38)
-goal_stack = 10.0
+goal_stack = 10
 
 [node name="NonBiodegradableTrashCan" parent="Entities/NonLiving/TrashCans" index="1" instance=ExtResource("5_4eos8")]
 position = Vector2(0, -38)
@@ -75,7 +76,7 @@ goal_stack = 5.0
 
 [node name="RecyclableTrashCan" parent="Entities/NonLiving/TrashCans" index="2" instance=ExtResource("6_4jqk0")]
 position = Vector2(319, -38)
-goal_stack = 10.0
+goal_stack = 10
 
 [node name="MasterSaveComponent" parent="WorldEventHandler" index="3" node_paths=PackedStringArray("id")]
 id = NodePath("../../Scripts/IDComponent")

@@ -14,7 +14,7 @@ var autoload_node: Node:
 	get: 
 		return NodeTools.get_autoload(self, autoload)
 
-var state: State: 
+var state: StateChartState: 
 	get: 
 		return autoload_node.get(property) 
 

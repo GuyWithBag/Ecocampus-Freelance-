@@ -11,14 +11,21 @@ class_name PrintColor
 
 var owner: Object
 
+## Bandiad solution
+var production_disabled: bool = true
 
 func out(output: String) -> void: 
+	if production_disabled: 
+		return
 	if disabled: 
 		return
 	print_rich("[color=%s]%s" % [color.to_html(), output])
 	
 	
 func out_debug(output: String) -> void: 
+	if production_disabled: 
+		return
+		
 	if disabled: 
 		return
 	var node_name: String
@@ -32,6 +39,8 @@ func out_debug(output: String) -> void:
 	
 	
 func out_debug_wvalue(output: String, real_value) -> void: 
+	if production_disabled: 
+		return
 	if disabled: 
 		return
 	var final_color: Color = value_color

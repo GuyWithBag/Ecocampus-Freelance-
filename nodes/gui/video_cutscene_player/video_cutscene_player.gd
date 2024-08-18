@@ -6,7 +6,6 @@ class_name VideoCutscenePlayer
 
 @export var video_stream_player: VideoStreamPlayer
 @export var fade_in: ColorPropertyLerpComponent
-@export var fade_out: ColorPropertyLerpComponent
 @export var music_volume_slider: AudioBusVolumeSlider
 
 static func this() -> VideoCutscenePlayer: 
@@ -35,25 +34,28 @@ func _activated() -> void:
 	#get_tree().paused = true
 	video_stream_player.paused = false
 	music_volume_slider.mute = true
-	fade_out.process_enabled = true
+	fade_in.process_enabled = true
 	fade_in.finished.connect(
 		func(): 
-			fade_out.process_enabled = false
+			fade_in.process_enabled = false
 	, CONNECT_ONE_SHOT
 	)
 	fade_in.play()
 	
 	
 func _deactivated() -> void: 
-	fade_out.process_enabled = true
+	#fade_out.process_enabled = true
 	music_volume_slider.mute = false
-	fade_out.finished.connect(
+	
+	fade_in.process_enabled = true
+	fade_in.finished.connect(
 		func(): 
 			hide()
-			fade_out.process_enabled = false
+			fade_in.process_enabled = false
 	, CONNECT_ONE_SHOT
 	)
-	fade_out.play()
+	fade_in.play(-1)
+	
 	#get_tree().paused = true
 	video_stream_player.paused = true
 

@@ -12,6 +12,7 @@ script = ExtResource("4_khrq5")
 picked_up_item = ExtResource("2_xvuxo")
 maximum_points = 5
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_rhefh"]
 script = ExtResource("2_7tm0h")
@@ -19,6 +20,7 @@ description = "Plastic Bags"
 condition = SubResource("Resource_1v7q4")
 hide_counter_in_gui = false
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [resource]
 script = ExtResource("1_ayv04")

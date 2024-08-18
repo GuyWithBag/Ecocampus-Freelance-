@@ -25,3 +25,4 @@ female_sprite = ExtResource("1_vyspo")
 medals_required = 3
 is_default = false
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])

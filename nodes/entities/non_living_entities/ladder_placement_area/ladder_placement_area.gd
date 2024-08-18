@@ -5,6 +5,7 @@ class_name LadderPlacementArea
 @export var items_accesible_when_climbed: Array[PickuppableEntity]
 @export var ground_marker: Marker2D
 @export var top_marker: Marker2D
+@export var main_camera: MainCamera
 
 var on_ladder: bool
 var has_ladder: bool: 
@@ -58,7 +59,7 @@ func _interact() -> void:
 func move_up() -> void: 
 	var tween: Tween = get_tree().create_tween()
 	var player: PlayerNode = PlayerManager.player
-	var duration: float = 0.9
+	#var duration: float = 0.9
 	
 	GetMousePositionArea.this().visible = false
 	
@@ -70,7 +71,7 @@ func move_up() -> void:
 	tween.chain()
 	player.z_index = 1
 	tween.step_finished.connect(
-		func(idx: int): 
+		func(_idx: int): 
 			player.lock_size = true
 			
 			player.is_animation_only = true
@@ -78,6 +79,7 @@ func move_up() -> void:
 			player.state_chart.send_event("walk")
 			player.animation_player.play("walk_left")
 			ToMapPickerIconButton.this().visible = false
+			#main_camera.adjust_offset = Vector2.ZERO
 			
 			player.animate_y_direction_move = false
 			player.y_direction_variety.index = 1
@@ -129,6 +131,7 @@ func move_down() -> void:
 			player.is_move_to_position = false
 			wait_for_player_to_come = true
 			#printerr("ASDSADASDASd")
+			#main_camera.adjust_offset = Vector2(0, -300)
 			for node: Node in get_tree().get_nodes_in_group("LadderDisable"): 
 				if node.get("need_quest_before_enabled") != null && node.need_quest_before_enabled: 
 					if ExtendedQuestSystem.is_quest_active(node.need_quest_before_enabled): 

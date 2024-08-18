@@ -41,6 +41,7 @@ title_variation = 0
 reset_when_title_variation_reached = false
 is_dialogue_game_state = true
 save_as_resource_path = true
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_yr0dy"]
 script = ExtResource("19_1io28")
@@ -156,8 +157,9 @@ texts = Array[String]([])
 script = ExtResource("8_jaiqu")
 value = "8994681697605556668"
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
-[node name="CON" instance=ExtResource("1_fiqww")]
+[node name="CONLevel" instance=ExtResource("1_fiqww")]
 metadata/_edit_horizontal_guides_ = [716.0, -237.0, 1191.0]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="NavigationRegion" index="0"]

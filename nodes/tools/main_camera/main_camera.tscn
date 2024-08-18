@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://diw5na46cv8j6" path="res://addons/node_components/nodes/components/follow_node_component/follow_node_component.tscn" id="2_loy48"]
 
 [node name="MainCamera" type="Camera2D" node_paths=PackedStringArray("follow_node_component")]
+position_smoothing_enabled = true
 script = ExtResource("1_ha8ve")
 follow_node_component = NodePath("FollowNodeComponent")
 

@@ -1,4 +1,5 @@
 ## ItemStack resource that contains modifiable properties and contains ItemModel. 
+@tool
 extends SaveableResource
 class_name ItemStack
 

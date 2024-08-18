@@ -52,7 +52,7 @@ func update() -> void:
 		
 	if inventory == null || items.is_empty(): 
 		return
-	
+	updated.emit()
 	#if updating: 
 		#return
 	#updating = true

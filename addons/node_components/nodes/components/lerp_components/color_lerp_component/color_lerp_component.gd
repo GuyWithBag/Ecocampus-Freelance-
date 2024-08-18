@@ -68,6 +68,10 @@ func _set_interpolation(value: TweenArguments) -> void:
 	if !Engine.is_editor_hint(): 
 		if !is_node_ready(): 
 			await ready
+			
+	if !is_instance_valid(_a_lerp): 
+		return
+		
 	_r_lerp.interpolation = interpolation
 	_g_lerp.interpolation = interpolation
 	_b_lerp.interpolation = interpolation
@@ -87,5 +91,3 @@ func _is_finished() -> void:
 	if reset_current_when_finished: 
 		current = Color.BLACK
 	super._is_finished()
-
-

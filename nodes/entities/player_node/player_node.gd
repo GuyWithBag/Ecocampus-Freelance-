@@ -1,6 +1,6 @@
 @tool
 
-## DO NOT PUT PLAYER DATA IN PLAYERNODE
+## ----------------------------- ## DO NOT PUT PLAYER DATA IN PLAYERNODE ## ------------------------------ ##
 
 extends EntityNode
 class_name PlayerNode
@@ -10,7 +10,6 @@ class_name PlayerNode
 		gender = value
 		if !is_node_ready(): 
 			await ready
-		printerr(gender)
 		if gender == GlobalEnums.Gender.MALE: 
 			node_variety_manager.index = 1
 		else: 
@@ -25,7 +24,7 @@ class_name PlayerNode
 @export var cosmetic_equipper_component: CosmeticEquipperComponent
 @export var path_find_movement_component: PathFindMovementComponent
 @export var y_direction_variety: NodeVarietyManager
-@export var walk_state: State
+@export var walk_state: StateChartState
 
 ## Should it be able to move to that position?
 var is_move_to_position: bool
@@ -38,6 +37,7 @@ func _ready() -> void:
 	super._ready()
 	if Engine.is_editor_hint(): 
 		return
+	PlayerManager.init()
 	PlayerManager.player_instanced.emit()
 
 
@@ -109,7 +109,7 @@ func _on_path_find_movement_component_finished_navigation() -> void:
 	state_chart.send_event("idle")
 
 
-func _on_walk_state_processing(delta: float) -> void:
+func _on_walk_state_processing(_delta: float) -> void:
 	if animate_y_direction_move: 
 		if walk.direction.y > 0: 
 			y_direction_variety.index = 0

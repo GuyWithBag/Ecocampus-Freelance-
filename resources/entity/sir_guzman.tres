@@ -31,3 +31,4 @@ gender = 1
 facing_left = true
 group = "Entity"
 save_as_resource_path = true
+exclude_save_as_resource_path_on = Array[String]([])

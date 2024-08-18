@@ -39,6 +39,9 @@ var elapsed_time: float = 0:
 
 
 func play(to: float = 1) -> void: 
+	if !is_instance_valid(get_tree()): 
+		return
+		
 	if loop_times == -1:
 		_infinite_loop = true
 		while _infinite_loop: 
@@ -58,6 +61,7 @@ func play(to: float = 1) -> void:
 
 
 func make_tween(to: float = 1, from_tween: Tween = null) -> Tween: 
+		
 	var tween: Tween
 	if from_tween: 
 		tween = from_tween

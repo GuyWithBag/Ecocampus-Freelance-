@@ -52,7 +52,7 @@ volume_db = 1.0
 change_bus = false
 bus = &"Master"
 
-[node name="DialogueBox" node_paths=PackedStringArray("character_label", "responses_menu", "dialogue_label", "speaker_sprites_switcher") instance=ExtResource("1_sidoq")]
+[node name="DialogueBox" node_paths=PackedStringArray("character_label", "responses_menu", "dialogue_label", "speaker_sprites_switcher", "skip_button", "skip_typing_button") instance=ExtResource("1_sidoq")]
 custom_minimum_size = Vector2(536, 140)
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -60,7 +60,10 @@ dialogue_gui_alias = 1
 character_label = NodePath("Balloon/Dialogue/VBoxContainer/CharacterLabel")
 responses_menu = NodePath("Balloon/Responses/ResponsesMenu")
 dialogue_label = NodePath("Balloon/Dialogue/VBoxContainer/DialogueLabel")
+show_fast_forward_button_after_first_intereaction = false
 speaker_sprites_switcher = NodePath("SpeakerSpritesSwitcher")
+skip_button = NodePath("Balloon/Buttons/Buttons/Skip")
+skip_typing_button = NodePath("Balloon/Buttons/Buttons/SkipTyping")
 
 [node name="TapAnywhere" type="Label" parent="." index="0"]
 visible = false
@@ -231,7 +234,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -31.0
+offset_top = -47.0
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -260,15 +263,23 @@ size_flags_horizontal = 3
 
 [node name="Skip" parent="Balloon/Buttons/Buttons" index="3" instance=ExtResource("11_udtto")]
 visible = false
-custom_minimum_size = Vector2(300, 100)
+custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Skip"
 
 [node name="OnPressedNextDialogue" parent="Balloon/Buttons/Buttons/Skip" index="2" node_paths=PackedStringArray("control") instance=ExtResource("9_j65rk")]
 do_not_skip_when_typing = false
 control = NodePath("..")
 
-[node name="Cancel" parent="Balloon/Buttons/Buttons" index="4" instance=ExtResource("4_yi2ws")]
+[node name="SkipTyping" parent="Balloon/Buttons/Buttons" index="4" instance=ExtResource("11_udtto")]
+visible = false
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Skip Typing"
+
+[node name="Cancel" parent="Balloon/Buttons/Buttons" index="5" instance=ExtResource("4_yi2ws")]
 visible = false
 layout_mode = 2
 text = "Cancel
@@ -288,6 +299,7 @@ audio = SubResource("Resource_jwwh6")
 [connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
 [connection signal="toggled" from="Balloon/Buttons/Buttons/AutoPlay" to="." method="_on_auto_play_toggled"]
 [connection signal="toggled" from="Balloon/Buttons/Buttons/FastForward" to="." method="_on_fast_forward_toggled"]
+[connection signal="pressed" from="Balloon/Buttons/Buttons/SkipTyping" to="." method="_on_skip_typing_pressed"]
 [connection signal="pressed" from="Balloon/Buttons/Buttons/Cancel" to="." method="_on_cancel_pressed"]
 
 [editable path="TapAnywhere/HoverNodeAnimation"]

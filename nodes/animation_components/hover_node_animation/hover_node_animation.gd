@@ -27,11 +27,11 @@ func _ready() -> void:
 # FIXME: Doesn't loop properly (BaseLerpComponent problem) 
 func play() -> void: 
 	return
-	original_position = node.position
-	hover_lerp.start_point = Vector2(node.position.x, node.position.y - up_offset)
-	hover_lerp.end_point = Vector2(node.position.x, node.position.y + down_offset)
-	hover_lerp.node = node
-	hover_lerp.play()
+	#original_position = node.position
+	#hover_lerp.start_point = Vector2(node.position.x, node.position.y - up_offset)
+	#hover_lerp.end_point = Vector2(node.position.x, node.position.y + down_offset)
+	#hover_lerp.node = node
+	#hover_lerp.play()
 	
 	
 func stop() -> void: 

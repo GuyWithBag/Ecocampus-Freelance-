@@ -14,6 +14,7 @@ enum DialogueGUIAlias {
 @export var character_label: RichTextLabel
 @export var responses_menu: DialogueResponsesMenu
 @export var dialogue_label: DialogueLabel
+@export var show_fast_forward_button_after_first_intereaction: bool
 
 @export var speaker_sprites_switcher: SpeakerSpritesSwitcher
 
@@ -28,7 +29,10 @@ enum DialogueGUIAlias {
 
 @export var fast_forward_speed: float = 2
 @export var typing_audio: AudioManagerPlayer
+@export var skip_button: Button
+@export var skip_typing_button: Button
 
+var current_arguments: DialogueArguments
 var text_speed_multiplier: float = 1
 var auto_play: bool
 
@@ -148,6 +152,9 @@ func start(arguments: DialogueArguments, title_variation_counter: PointCounterCo
 	var title: String = arguments.title 
 	var extra_game_states: Array = arguments.extra_game_states 
 	var title_variation: int = arguments.title_variation
+	
+	arguments.played_count += 1
+	current_arguments = arguments
 	#var is_dialogue_game_state: bool = arguments.is_dialogue_game_state
 	
 	var plus_game_states: Array = [self] + extra_game_states
@@ -270,3 +277,26 @@ func set_sprite_to_sad() -> void:
 func set_sprite_to_idle() -> void: 
 	is_emoting = false
 	speaker_sprites_switcher.set_current_speaker_rect_texture(speaker_sprites_switcher.get_speaker_idle_sprite(dialogue_line.character))
+
+
+func _on_skip_typing_pressed() -> void:
+	dialogue_label.skip_typing()
+	
+	
+func _process(delta: float) -> void: 
+	if !current_arguments:
+		return 
+		
+	if current_arguments.played_count > 1:
+		if dialogue_label.is_typing: 
+			skip_typing_button.show()
+			skip_button.hide()
+		else:
+			skip_button.show()
+			skip_typing_button.hide()
+	else:
+		skip_typing_button.hide()
+		skip_button.hide()
+	
+	
+	

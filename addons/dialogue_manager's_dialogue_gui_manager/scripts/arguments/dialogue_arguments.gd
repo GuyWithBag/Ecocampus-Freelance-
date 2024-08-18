@@ -16,6 +16,7 @@ class_name DialogueArguments
 
 @export var is_dialogue_game_state: bool = true 
 
+var played_count: int
 
 func set_main_speaker(value: Array[Entity]) -> DialogueArguments:
 	main_speakers = value

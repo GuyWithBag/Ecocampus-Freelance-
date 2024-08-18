@@ -10,6 +10,9 @@ signal task_completed(task: EcoQuestTask)
 @export var tasks: Array[EcoQuestTask]: 
 	set(value): 
 		tasks = value
+		if Engine.is_editor_hint(): 
+			return
+			
 		for task: EcoQuestTask in tasks: 
 			task.completed.connect(
 				func(): 

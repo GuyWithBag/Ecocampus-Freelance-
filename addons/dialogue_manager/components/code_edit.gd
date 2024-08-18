@@ -11,7 +11,7 @@ const DialogueManagerParser = preload("./parser.gd")
 const DialogueSyntaxHighlighter = preload("./code_edit_syntax_highlighter.gd")
 
 
-# A link back to the owner MainView
+# A link back to the owner `MainView`
 var main_view
 
 # Theme overrides for syntax highlighting, etc
@@ -358,10 +358,13 @@ func toggle_comment() -> void:
 # Remove the current line
 func delete_current_line() -> void:
 	var cursor = get_cursor()
-	var lines: PackedStringArray = text.split("\n")
-	lines.remove_at(cursor.y)
-	text = "\n".join(lines)
-	set_cursor(cursor)
+	if get_line_count() == 1:
+		select_all()
+	elif cursor.y == 0:
+		select(0, 0, 1, 0)
+	else:
+		select(cursor.y - 1, get_line_width(cursor.y - 1), cursor.y, get_line_width(cursor.y))
+	delete_selection()
 	text_changed.emit()
 
 
@@ -380,7 +383,7 @@ func move_line(offset: int) -> void:
 
 	var lines := text.split("\n")
 
-	# We can't move the lines out of bounds
+	# Prevent the lines from being out of bounds
 	if from + offset < 0 or to + offset >= lines.size(): return
 
 	var target_from_index = from - 1 if offset == -1 else to + 1

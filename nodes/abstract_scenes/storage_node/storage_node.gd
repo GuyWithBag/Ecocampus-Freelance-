@@ -2,7 +2,7 @@ extends EntityNode
 class_name StorageNode
 
 @export var drop_audio: AudioManagerPlayer
-@export var goal_stack: float = 10
+@export var goal_stack: int = 10
 
 signal item_rejected(item_stack: ItemStack)
 signal item_accepted(item_stack: ItemStack)

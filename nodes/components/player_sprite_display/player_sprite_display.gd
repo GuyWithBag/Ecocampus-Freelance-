@@ -12,6 +12,10 @@ class_name PlayerSpriteDisplay
 		update()
 
 
+func _ready() -> void: 
+	update()
+	
+
 func update() -> void: 
 	if !is_node_ready(): 
 		await ready

@@ -12,7 +12,7 @@ func _ready() -> void:
 		entity.disabled = true
 
 
-func _on_item_accepted(item_stack: ItemStack) -> void: 
+func _on_item_accepted(_item_stack: ItemStack) -> void: 
 	hide()
 	disabled = true
 	for entity: EntityNode in unlock_entities: 

@@ -1,6 +1,5 @@
 [gd_scene load_steps=2 format=3 uid="uid://bskfvry8t4hly"]
 
-[ext_resource type="PackedScene" uid="uid://bk4jnfmvdr6ud" path="res://nodes/levels/gui/buttons/button_plus/button_plus.tscn" id="1_jiw7t"]
-
+[ext_resource type="PackedScene" uid="uid://bk4jnfmvdr6ud" path="res://nodes/gui/buttons/button_plus/button_plus.tscn" id="1_jiw7t"]
 [node name="DialogueBoxButton" instance=ExtResource("1_jiw7t")]
 theme_type_variation = &"DialogueBoxButton"

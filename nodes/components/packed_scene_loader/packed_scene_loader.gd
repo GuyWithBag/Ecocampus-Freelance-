@@ -2,7 +2,7 @@ extends NodeComponent
 class_name PackedSceneLoader
 
 signal thread_started
-signal thread_ended
+#signal thread_ended
 
 @export var start_at_ready: bool
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8rw1leee5u7c"]
+[gd_scene load_steps=9 format=3 uid="uid://c8rw1leee5u7c"]
 
 [ext_resource type="PackedScene" uid="uid://j2jy5p1ojh58" path="res://addons/gui_manager/nodes/gui/gui/gui.tscn" id="1_lffhb"]
 [ext_resource type="Script" path="res://nodes/gui/video_cutscene_player/video_cutscene_player.gd" id="2_qvjn5"]
@@ -10,19 +10,13 @@
 [sub_resource type="VideoStreamTheora" id="VideoStreamTheora_cmh54"]
 file = "res://assets/videos/intro_cutscene.ogv"
 
-[sub_resource type="Resource" id="Resource_rf1ss"]
-script = ExtResource("4_sggck")
-transition_type = 4
-ease_type = 2
-duration = 0.8
-
 [sub_resource type="Resource" id="Resource_oathq"]
 script = ExtResource("4_sggck")
 transition_type = 4
 ease_type = 2
 duration = 0.8
 
-[node name="VideoCutscenePlayer" node_paths=PackedStringArray("video_stream_player", "fade_in", "fade_out", "music_volume_slider") groups=["VideoCutscenePlayer"] instance=ExtResource("1_lffhb")]
+[node name="VideoCutscenePlayer" node_paths=PackedStringArray("video_stream_player", "fade_in", "music_volume_slider") groups=["VideoCutscenePlayer"] instance=ExtResource("1_lffhb")]
 process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,8 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_qvjn5")
 video_stream_player = NodePath("AspectRatioContainer/VideoStreamPlayer")
-fade_in = NodePath("In")
-fade_out = NodePath("Out")
+fade_in = NodePath("FadeIn")
 music_volume_slider = NodePath("MusicVolumeSlider")
 
 [node name="Background" type="ColorRect" parent="." index="0"]
@@ -54,7 +47,6 @@ grow_vertical = 2
 ratio = 1.7778
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer" index="0"]
-process_mode = 3
 layout_mode = 2
 stream = SubResource("VideoStreamTheora_cmh54")
 expand = true
@@ -67,29 +59,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.002048)
+color = Color(0, 0, 0, 0.97355)
 
-[node name="Out" parent="." index="4" node_paths=PackedStringArray("node") instance=ExtResource("3_m2eh5")]
-node = NodePath("../Fade")
-properties = PackedStringArray("color")
-start_point = Color(0, 0, 0, 0)
-end_point = Color(0, 0, 0, 1)
-current = Color(0, 0, 0, 0.002048)
-process_enabled = false
-interpolation = SubResource("Resource_rf1ss")
-
-[node name="In" parent="." index="5" node_paths=PackedStringArray("node") instance=ExtResource("3_m2eh5")]
+[node name="FadeIn" parent="." index="4" node_paths=PackedStringArray("node") instance=ExtResource("3_m2eh5")]
 node = NodePath("../Fade")
 properties = PackedStringArray("color")
 start_point = Color(0, 0, 0, 1)
 end_point = Color(0, 0, 0, 0)
-current = Color(0, 0, 0, 0.998648)
+current = Color(0, 0, 0, 0.97355)
 interpolation = SubResource("Resource_oathq")
 
-[node name="MusicVolumeSlider" parent="." index="6" instance=ExtResource("5_uyk42")]
+[node name="MusicVolumeSlider" parent="." index="5" instance=ExtResource("5_uyk42")]
 audio_bus = 1
 
-[node name="SkipButton" parent="." index="7" instance=ExtResource("6_g3rpe")]
+[node name="SkipButton" parent="." index="6" instance=ExtResource("6_g3rpe")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

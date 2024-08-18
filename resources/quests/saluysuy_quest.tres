@@ -11,6 +11,7 @@ script = ExtResource("3_3nb0f")
 total_stack_size = 10
 maximum_points = 1
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_kw5r4"]
 script = ExtResource("4_01gdq")
@@ -18,6 +19,7 @@ description = "Segregate Trash"
 condition = SubResource("Resource_k2bfw")
 hide_counter_in_gui = false
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [resource]
 script = ExtResource("1_3kere")

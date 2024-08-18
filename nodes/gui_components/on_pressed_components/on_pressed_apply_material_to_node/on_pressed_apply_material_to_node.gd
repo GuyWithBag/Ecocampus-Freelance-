@@ -35,4 +35,3 @@ class_name OnPressedApplyShaderToNode
 
 func _on_pressed() -> void: 
 	apply_material_to_node.toggle()
-
