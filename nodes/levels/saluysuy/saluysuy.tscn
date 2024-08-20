@@ -43,6 +43,7 @@ texts = Array[String]([])
 script = ExtResource("5_tf1g0")
 value = "6900684437040981709"
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [node name="Saluysuy" instance=ExtResource("1_pd2cb")]
 
@@ -52,7 +53,6 @@ navigation_polygon = SubResource("NavigationPolygon_jhrwx")
 
 [node name="MainCamera" parent="Cameras" index="0" node_paths=PackedStringArray("follow_node")]
 position = Vector2(656, 327)
-position_smoothing_enabled = true
 follow_node = NodePath("../../Entities/Living/PlayerNode")
 
 [node name="OffsetCameraIfNodeReachY" parent="Cameras/MainCamera" index="2" node_paths=PackedStringArray("node", "camera") instance=ExtResource("2_pc6px")]

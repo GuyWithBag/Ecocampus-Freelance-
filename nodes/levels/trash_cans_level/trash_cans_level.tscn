@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bc1txwrwrlhfu"]
+[gd_scene load_steps=12 format=3 uid="uid://bc1txwrwrlhfu"]
 
 [ext_resource type="PackedScene" uid="uid://cm6jeskbiise6" path="res://nodes/abstract_scenes/level_node/level_node.tscn" id="1_4fkii"]
 [ext_resource type="PackedScene" uid="uid://ci8jg3d2e7j5p" path="res://nodes/components/player_sprite_display/player_sprite_display.tscn" id="2_xrh1o"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dtqoxulajxxhx" path="res://nodes/storage_nodes/recyclable_trash_can/recyclable_trash_can.tscn" id="6_4jqk0"]
 [ext_resource type="PackedScene" uid="uid://8qsjsyglmgq4" path="res://nodes/entities/player_node/player_node.tscn" id="6_ma7va"]
 [ext_resource type="Script" path="res://addons/save_components_system/scripts/resources/id.gd" id="7_w83j3"]
+[ext_resource type="PackedScene" uid="uid://d0380i7036ibi" path="res://nodes/components/disable_player_on_this_scene/disable_player_on_this_scene.tscn" id="10_gb6vy"]
 
 [sub_resource type="Resource" id="Resource_7dr80"]
 script = ExtResource("7_w83j3")
@@ -86,6 +87,8 @@ disabled = true
 
 [node name="IDComponent" parent="Scripts" index="2"]
 data = SubResource("Resource_7dr80")
+
+[node name="DisablePlayerOnThisScene" parent="Scripts" index="5" instance=ExtResource("10_gb6vy")]
 
 [editable path="WorldEventHandler"]
 [editable path="Scripts/TwoPoint5DSpaceSimulator"]

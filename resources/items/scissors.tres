@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemModel" load_steps=3 format=3 uid="uid://bhpm0w4yit8bj"]
 
-[ext_resource type="Texture2D" uid="uid://2yieg5eovtlk" path="res://assets/collect_item/scissors.png" id="1_jvmud"]
+[ext_resource type="Texture2D" uid="uid://dtdpdn0g88kyn" path="res://assets/collect_item/scissor.png" id="1_jvmud"]
 [ext_resource type="Script" path="res://scripts/resources/item_model.gd" id="1_qv63s"]
 
 [resource]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0380i7036ibi"]
+
+[ext_resource type="Script" path="res://nodes/components/disable_player_on_this_scene/disable_player_on_this_scene.gd" id="1_4aw4k"]
+
+[node name="DisablePlayerOnThisScene" type="Node"]
+script = ExtResource("1_4aw4k")
