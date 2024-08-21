@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="ItemModel" load_steps=3 format=3 uid="uid://bhpm0w4yit8bj"]
 
-[ext_resource type="Texture2D" uid="uid://dtdpdn0g88kyn" path="res://assets/collect_item/scissor.png" id="1_jvmud"]
 [ext_resource type="Script" path="res://scripts/resources/item_model.gd" id="1_qv63s"]
+[ext_resource type="Texture2D" uid="uid://dtdpdn0g88kyn" path="res://assets/collect_item/scissors.png" id="1_wsmmf"]
 
 [resource]
 script = ExtResource("1_qv63s")
 name = &"Scissors"
 description = ""
-item_icon = ExtResource("1_jvmud")
+item_icon = ExtResource("1_wsmmf")
 type = 3
 maximum_stack = 1

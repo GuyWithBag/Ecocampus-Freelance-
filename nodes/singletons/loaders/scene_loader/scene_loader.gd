@@ -38,7 +38,7 @@ func _process(_delta: float) -> void:
 	if !is_loading: 
 		return
 		
-		
+	#print(load_status)
 	load_status = ResourceLoader.load_threaded_get_status(_next_scene_path, load_progress)
 	match load_status: 
 		ResourceLoader.ThreadLoadStatus.THREAD_LOAD_INVALID_RESOURCE: 

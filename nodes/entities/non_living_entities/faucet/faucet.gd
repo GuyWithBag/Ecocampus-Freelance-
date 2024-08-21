@@ -22,6 +22,7 @@ func _interact() -> void:
 	if is_on(): 
 		state = GlobalEnums.OnState.OFF
 		PlayerManager.player_data.faucets_turned_off += 1
+		#printerr(PlayerManager.player_data.faucets_turned_off)
 	else: 
 		state = GlobalEnums.OnState.ON
 

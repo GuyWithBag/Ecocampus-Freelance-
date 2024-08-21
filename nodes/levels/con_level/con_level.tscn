@@ -160,7 +160,7 @@ save_as_resource_path = false
 exclude_save_as_resource_path_on = Array[String]([])
 
 [node name="CONLevel" instance=ExtResource("1_fiqww")]
-metadata/_edit_horizontal_guides_ = [716.0, -237.0, 1191.0]
+metadata/_edit_horizontal_guides_ = [716.0, -249.0, 1191.0]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="NavigationRegion" index="0"]
 position = Vector2(119, 18)
@@ -171,6 +171,7 @@ navigation_polygon = SubResource("NavigationPolygon_6kqic")
 limit_top = -237
 limit_bottom = 1191
 follow_node = NodePath("../../Entities/Living/PlayerNode")
+adjust_offset = Vector2(0, -100)
 
 [node name="TextureRect" type="TextureRect" parent="Background/CanvasLayer" index="1"]
 offset_left = -48.0
