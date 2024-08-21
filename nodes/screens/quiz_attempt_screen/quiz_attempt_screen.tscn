@@ -18,7 +18,9 @@ sound = ExtResource("7_lxr2a")
 play_from_position = 0
 pitch_scale = 1.0
 volume_slider = 1.0
+change_db = false
 volume_db = 0.0
+change_bus = false
 bus = &"Music"
 
 [node name="QuizAttemptScreen" node_paths=PackedStringArray("assesment_music", "quiz_attempt_gui", "idle", "happy", "sad", "reaction_sprites") instance=ExtResource("1_imule")]
@@ -29,17 +31,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_6bxe1")
 assesment_music = NodePath("Audio/AssesmentMusic")
-quiz_attempt_gui = NodePath("MarginContainer/Control/QuizAttemptGUI")
+quiz_attempt_gui = NodePath("MarginContainer/Control/CenterContainer/Offset/QuizAttemptGUI")
 quiz = null
 entity_answering = null
-idle = NodePath("MarginContainer/Control/SpriteRoot/ReactionSprites/Idle")
-happy = NodePath("MarginContainer/Control/SpriteRoot/ReactionSprites/Happy")
-sad = NodePath("MarginContainer/Control/SpriteRoot/ReactionSprites/Sad")
-reaction_sprites = NodePath("MarginContainer/Control/SpriteRoot/ReactionSprites")
+idle = NodePath("MarginContainer/Control/CenterContainer2/SpriteRoot/ReactionSprites/Idle")
+happy = NodePath("MarginContainer/Control/CenterContainer2/SpriteRoot/ReactionSprites/Happy")
+sad = NodePath("MarginContainer/Control/CenterContainer2/SpriteRoot/ReactionSprites/Sad")
+reaction_sprites = NodePath("MarginContainer/Control/CenterContainer2/SpriteRoot/ReactionSprites")
 
 [node name="BlackOverlay" parent="." index="0" instance=ExtResource("3_hycv7")]
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="GaussianBlur" parent="." index="1" instance=ExtResource("3_8smjl")]
 layout_mode = 1
@@ -56,10 +62,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -68,54 +70,64 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="Control" type="Control" parent="MarginContainer" index="0"]
+[node name="Control" type="HBoxContainer" parent="MarginContainer" index="0"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="QuizAttemptGUI" parent="MarginContainer/Control" index="0" instance=ExtResource("3_suh6i")]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 592.0
-offset_right = 592.0
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Control" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Offset" type="Control" parent="MarginContainer/Control/CenterContainer" index="0"]
+layout_mode = 2
+
+[node name="QuizAttemptGUI" parent="MarginContainer/Control/CenterContainer/Offset" index="0" instance=ExtResource("3_suh6i")]
+layout_mode = 2
+offset_left = 122.0
+offset_right = 122.0
 grow_vertical = 2
+size_flags_horizontal = 6
 metadata/_edit_use_anchors_ = true
 
-[node name="SpriteRoot" type="Control" parent="MarginContainer/Control" index="1"]
-anchors_preset = 0
-offset_left = 1456.0
-offset_top = 532.0
-offset_right = 1456.0
-offset_bottom = 532.0
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/Control" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpriteRoot" type="Control" parent="MarginContainer/Control/CenterContainer2" index="0"]
+layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ReactionSprites" type="TabContainer" parent="MarginContainer/Control/SpriteRoot" index="0"]
+[node name="ReactionSprites" type="TabContainer" parent="MarginContainer/Control/CenterContainer2/SpriteRoot" index="0"]
 layout_mode = 0
-offset_left = -260.0
+offset_left = -243.0
 offset_top = -374.0
-offset_right = 318.0
+offset_right = 335.0
 offset_bottom = 366.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_hbiwb")
+current_tab = 0
 clip_tabs = false
 tabs_visible = false
+metadata/_edit_use_anchors_ = true
 
-[node name="Idle" type="TextureRect" parent="MarginContainer/Control/SpriteRoot/ReactionSprites" index="1"]
+[node name="Idle" type="TextureRect" parent="MarginContainer/Control/CenterContainer2/SpriteRoot/ReactionSprites" index="1"]
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
+metadata/_tab_index = 0
 
-[node name="Happy" type="TextureRect" parent="MarginContainer/Control/SpriteRoot/ReactionSprites" index="2"]
+[node name="Happy" type="TextureRect" parent="MarginContainer/Control/CenterContainer2/SpriteRoot/ReactionSprites" index="2"]
 visible = false
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
+metadata/_tab_index = 1
 
-[node name="Sad" type="TextureRect" parent="MarginContainer/Control/SpriteRoot/ReactionSprites" index="3"]
+[node name="Sad" type="TextureRect" parent="MarginContainer/Control/CenterContainer2/SpriteRoot/ReactionSprites" index="3"]
 visible = false
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
+metadata/_tab_index = 2
 
 [node name="AssesmentMusic" parent="Audio" index="4" instance=ExtResource("5_le8am")]
 type = 1
@@ -126,4 +138,4 @@ gui = NodePath("..")
 activated_state = "assesment"
 deactivated_state = "playing"
 
-[connection signal="deactivated" from="MarginContainer/Control/QuizAttemptGUI" to="." method="_on_quiz_attempt_gui_deactivated"]
+[connection signal="deactivated" from="MarginContainer/Control/CenterContainer/Offset/QuizAttemptGUI" to="." method="_on_quiz_attempt_gui_deactivated"]
