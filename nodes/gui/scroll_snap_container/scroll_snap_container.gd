@@ -26,12 +26,12 @@ enum ScrollDirection {
 		#printerr(snap_size)
 		#scroll_horizontal_custom_step = abs(snap_size.x)
 		#printerr(get_scroll_children_size())
-		printerr("scroll size: ", get_scroll_size())
-		printerr("snap_size: ", snap_size)
-		printerr("snap_size scale: ", snap_size.x * current_snap_index)
-		printerr("max: ", get_h_scroll_bar().max_value)
-		printerr("scroll_children_size: ", get_scroll_children_size())
-		printerr("current_snap_index: ", current_snap_index)
+		#printerr("scroll size: ", get_scroll_size())
+		#printerr("snap_size: ", snap_size)
+		#printerr("snap_size scale: ", snap_size.x * current_snap_index)
+		#printerr("max: ", get_h_scroll_bar().max_value)
+		#printerr("scroll_children_size: ", get_scroll_children_size())
+		#printerr("current_snap_index: ", current_snap_index)
 		match scroll_direction: 
 			ScrollDirection.HORIZONTAL: 
 				scroll_horizontal_lerp.start_point = scroll_horizontal

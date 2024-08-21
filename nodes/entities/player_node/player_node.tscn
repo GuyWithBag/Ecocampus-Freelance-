@@ -501,7 +501,7 @@ _data = {
 "walk_right": SubResource("Animation_kkt17")
 }
 
-[node name="PlayerNode" node_paths=PackedStringArray("move_to_tap", "mouse_position", "cosmetic_equipper_component", "path_find_movement_component", "y_direction_variety", "walk_state") groups=["Player"] instance=ExtResource("1_hoap6")]
+[node name="PlayerNode" node_paths=PackedStringArray("move_to_tap", "mouse_position", "cosmetic_equipper_component", "path_find_movement_component", "y_direction_variety", "walk_state", "animation_player") groups=["Player"] instance=ExtResource("1_hoap6")]
 scale = Vector2(0.9, 0.9)
 collision_layer = 2
 collision_mask = 16
@@ -514,6 +514,7 @@ cosmetic_equipper_component = NodePath("CosmeticEquipperComponent")
 path_find_movement_component = NodePath("Components/Movement/PathFindMovementComponent")
 y_direction_variety = NodePath("Components/YDirectionVariety")
 walk_state = NodePath("StateChart/Root/Enabled/Mobility/Walk")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="Root" parent="CanvasLayer" index="0"]
 scale = Vector2(0.9, 0.9)
@@ -700,10 +701,12 @@ texture = ExtResource("15_54xdd")
 hframes = 6
 frame = 1
 
-[node name="CosmeticEquipperComponent" parent="." index="7" node_paths=PackedStringArray("male_sprite_node", "female_sprite_node") instance=ExtResource("10_qtam7")]
+[node name="CosmeticEquipperComponent" parent="." index="7" node_paths=PackedStringArray("male_sprite_node", "male_sprite_up_node", "female_sprite_node", "female_sprite_up_node") instance=ExtResource("10_qtam7")]
 player = ExtResource("4_qvtbh")
 male_sprite_node = NodePath("../Sprites/Boy/Down/BoyDefault")
+male_sprite_up_node = NodePath("../Sprites/Boy/Up/BoyDefault")
 female_sprite_node = NodePath("../Sprites/Girl/Down/GirlDefault")
+female_sprite_up_node = NodePath("../Sprites/Girl/Down/GirlDefault")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="8"]
 position = Vector2(1, -3)

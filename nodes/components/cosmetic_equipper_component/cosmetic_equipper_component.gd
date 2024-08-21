@@ -23,7 +23,9 @@ class_name CosmeticEquipperComponent
 		update()
 
 @export var male_sprite_node: Sprite2D
+@export var male_sprite_up_node: Sprite2D
 @export var female_sprite_node: Sprite2D
+@export var female_sprite_up_node: Sprite2D
 
 
 func _on_current_cosmetic_changed() -> void: 
@@ -34,4 +36,6 @@ func update() -> void:
 	if !is_node_ready(): 
 		await ready
 	male_sprite_node.texture = player.current_cosmetic.male_sprite
+	male_sprite_up_node.texture = player.current_cosmetic.male_sprite
 	female_sprite_node.texture = player.current_cosmetic.female_sprite
+	female_sprite_up_node.texture = player.current_cosmetic.female_sprite

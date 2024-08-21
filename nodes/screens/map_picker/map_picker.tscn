@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dcjxf25vgikeb"]
+[gd_scene load_steps=36 format=3 uid="uid://dcjxf25vgikeb"]
 
 [ext_resource type="PackedScene" uid="uid://3miay8g4x6j3" path="res://nodes/abstract_scenes/main_screen/main_screen.tscn" id="1_ethfg"]
 [ext_resource type="PackedScene" uid="uid://5npqpm4ofnr" path="res://nodes/gui/map_location_button/map_location_button.tscn" id="2_5f6v8"]
@@ -17,6 +17,12 @@
 [ext_resource type="Theme" uid="uid://cd55r8awc3jgy" path="res://themes/main_theme.tres" id="13_57mjl"]
 [ext_resource type="PackedScene" uid="uid://nnpxfb02bn17" path="res://nodes/components/change_scene_component/change_scene_component.tscn" id="13_o6nnp"]
 [ext_resource type="PackedScene" uid="uid://ijaa6c4i2ii4" path="res://nodes/components/on_change_scene_add_to_back_history/on_change_scene_add_to_back_history.tscn" id="14_n4yax"]
+
+[sub_resource type="Curve2D" id="Curve2D_dyenm"]
+_data = {
+"points": PackedVector2Array(60.4762, -15.1191, -60.4762, 15.1191, 735, -3, 204.107, -176.389, -204.107, 176.389, 304, 180, -75.9986, -216.533, 75.9986, 216.533, 369, 773, -377.976, 113.393, 377.976, -113.393, 1195, 834, 22.6786, 267.103, -22.6786, -267.103, 960, 540, 277.183, 47.877, -277.183, -47.877, 1269, 42, 105.833, -70.5556, -105.833, 70.5556, 747, 223, -52.9167, -125.992, 52.9167, 125.992, 684, 563, -151.191, 2.51984, 151.191, -2.51984, 1047, 718, -5.03968, 143.631, 5.03968, -143.631, 1321, 536, 110.873, 12.5992, -110.873, -12.5992, 1131, 320, 0, 0, 0, 0, 963, 432)
+}
+point_count = 12
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6f7ax"]
 atlas = ExtResource("3_p5pnp")
@@ -86,6 +92,67 @@ scene = "res://nodes/levels/trash_cans_level/trash_cans_level.tscn"
 transition = ExtResource("6_u5ky5")
 middle_transition_end_condition = 0
 
+[sub_resource type="Animation" id="Animation_lcly6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/CenterContainer/Island/Path2D/PathFollow2D/Root:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/CenterContainer/Island/Path2D/PathFollow2D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_baajt"]
+resource_name = "intro"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/CenterContainer/Island/Path2D/PathFollow2D/Root:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.08, 0.08), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/CenterContainer/Island/Path2D/PathFollow2D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3u6jh"]
+_data = {
+"RESET": SubResource("Animation_lcly6"),
+"intro": SubResource("Animation_baajt")
+}
+
 [node name="MapPicker" node_paths=PackedStringArray("to_main_menu") instance=ExtResource("1_ethfg")]
 script = ExtResource("2_y44ll")
 to_main_menu = NodePath("ToMainMenu")
@@ -111,7 +178,23 @@ grow_vertical = 2
 [node name="Island" type="Control" parent="Root/CenterContainer" index="0"]
 layout_mode = 2
 
-[node name="Island" type="TextureRect" parent="Root/CenterContainer/Island" index="0"]
+[node name="Path2D" type="Path2D" parent="Root/CenterContainer/Island" index="0"]
+position = Vector2(-946, -446)
+curve = SubResource("Curve2D_dyenm")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Root/CenterContainer/Island/Path2D" index="0"]
+position = Vector2(963, 432)
+rotation = 0.000318279
+progress = 5614.7
+rotates = false
+
+[node name="Root" type="Control" parent="Root/CenterContainer/Island/Path2D/PathFollow2D" index="0"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Island" type="TextureRect" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root" index="0"]
 layout_mode = 0
 offset_left = -776.0
 offset_top = -477.0
@@ -119,7 +202,7 @@ offset_right = 537.0
 offset_bottom = 465.0
 texture = SubResource("AtlasTexture_6f7ax")
 
-[node name="CON" parent="Root/CenterContainer/Island/Island" index="0" instance=ExtResource("2_5f6v8")]
+[node name="CON" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root/Island" index="0" instance=ExtResource("2_5f6v8")]
 layout_mode = 0
 offset_left = 153.0
 offset_top = 44.0
@@ -128,7 +211,7 @@ offset_bottom = 348.0
 texture_normal = SubResource("AtlasTexture_s445c")
 change_scene = SubResource("Resource_85384")
 
-[node name="DIT" parent="Root/CenterContainer/Island/Island" index="1" instance=ExtResource("2_5f6v8")]
+[node name="DIT" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root/Island" index="1" instance=ExtResource("2_5f6v8")]
 layout_mode = 0
 offset_left = 300.0
 offset_top = 524.0
@@ -137,7 +220,7 @@ offset_bottom = 807.0
 texture_normal = SubResource("AtlasTexture_6sr2r")
 change_scene = SubResource("Resource_tncep")
 
-[node name="Gate" parent="Root/CenterContainer/Island/Island" index="2" instance=ExtResource("2_5f6v8")]
+[node name="Gate" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root/Island" index="2" instance=ExtResource("2_5f6v8")]
 layout_mode = 0
 offset_left = -31.0
 offset_top = 300.0
@@ -146,7 +229,7 @@ offset_bottom = 618.0
 texture_normal = SubResource("AtlasTexture_ixlmw")
 change_scene = SubResource("Resource_bteyx")
 
-[node name="Library" parent="Root/CenterContainer/Island/Island" index="3" instance=ExtResource("2_5f6v8")]
+[node name="Library" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root/Island" index="3" instance=ExtResource("2_5f6v8")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -162,7 +245,7 @@ grow_vertical = 2
 texture_normal = SubResource("AtlasTexture_wfi8a")
 change_scene = SubResource("Resource_vqtlx")
 
-[node name="Saluysoy" parent="Root/CenterContainer/Island/Island" index="4" instance=ExtResource("2_5f6v8")]
+[node name="Saluysoy" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root/Island" index="4" instance=ExtResource("2_5f6v8")]
 layout_mode = 0
 offset_left = 950.0
 offset_top = 139.0
@@ -171,22 +254,22 @@ offset_bottom = 432.0
 texture_normal = SubResource("AtlasTexture_twbk7")
 change_scene = SubResource("Resource_lmf8a")
 
-[node name="TinyIsland" type="TextureRect" parent="Root/CenterContainer/Island" index="1"]
+[node name="TinyIsland" type="TextureRect" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root" index="1"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 511.0
-offset_top = 219.0
-offset_right = 865.0
-offset_bottom = 475.0
+offset_left = 471.0
+offset_top = 179.0
+offset_right = 825.0
+offset_bottom = 435.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = SubResource("AtlasTexture_76hmo")
 
-[node name="Trashcan" parent="Root/CenterContainer/Island/TinyIsland" index="0" instance=ExtResource("2_5f6v8")]
+[node name="Trashcan" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root/TinyIsland" index="0" instance=ExtResource("2_5f6v8")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -201,6 +284,12 @@ grow_horizontal = 0
 grow_vertical = 0
 texture_normal = SubResource("AtlasTexture_h43h3")
 change_scene = SubResource("Resource_04iki")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root" index="2"]
+root_node = NodePath("../../../../../../..")
+libraries = {
+"": SubResource("AnimationLibrary_3u6jh")
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="Root" index="2"]
 layout_mode = 1
