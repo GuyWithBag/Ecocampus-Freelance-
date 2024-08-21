@@ -18,11 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://nnpxfb02bn17" path="res://nodes/components/change_scene_component/change_scene_component.tscn" id="13_o6nnp"]
 [ext_resource type="PackedScene" uid="uid://ijaa6c4i2ii4" path="res://nodes/components/on_change_scene_add_to_back_history/on_change_scene_add_to_back_history.tscn" id="14_n4yax"]
 
-[sub_resource type="Curve2D" id="Curve2D_dyenm"]
+[sub_resource type="Curve2D" id="Curve2D_3j438"]
 _data = {
-"points": PackedVector2Array(60.4762, -15.1191, -60.4762, 15.1191, 735, -3, 204.107, -176.389, -204.107, 176.389, 304, 180, -75.9986, -216.533, 75.9986, 216.533, 369, 773, -377.976, 113.393, 377.976, -113.393, 1195, 834, 22.6786, 267.103, -22.6786, -267.103, 960, 540, 277.183, 47.877, -277.183, -47.877, 1269, 42, 105.833, -70.5556, -105.833, 70.5556, 747, 223, -52.9167, -125.992, 52.9167, 125.992, 684, 563, -151.191, 2.51984, 151.191, -2.51984, 1047, 718, -5.03968, 143.631, 5.03968, -143.631, 1321, 536, 110.873, 12.5992, -110.873, -12.5992, 1131, 320, 0, 0, 0, 0, 963, 432)
+"points": PackedVector2Array(189.923, -3.81519, -189.923, 3.81519, 923, 143, -6.72717, -210.224, 6.72717, 210.224, 698, 415, -46.2126, 22.9185, 46.2126, -22.9185, 977, 627, -51.2204, 78.4321, 51.2204, -78.4321, 1092, 520, 53.5143, -59.4603, -53.5143, 59.4603, 937, 453)
 }
-point_count = 12
+point_count = 5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6f7ax"]
 atlas = ExtResource("3_p5pnp")
@@ -102,7 +102,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(0.5),
 "update": 0,
 "values": [Vector2(1, 1)]
 }
@@ -130,7 +130,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.96667),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [Vector2(0.08, 0.08), Vector2(1, 1)]
 }
@@ -142,7 +142,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1.96667),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [0.0, 1.0]
 }
@@ -153,9 +153,10 @@ _data = {
 "intro": SubResource("Animation_baajt")
 }
 
-[node name="MapPicker" node_paths=PackedStringArray("to_main_menu") instance=ExtResource("1_ethfg")]
+[node name="MapPicker" node_paths=PackedStringArray("to_main_menu", "animation_player") instance=ExtResource("1_ethfg")]
 script = ExtResource("2_y44ll")
 to_main_menu = NodePath("ToMainMenu")
+animation_player = NodePath("Root/CenterContainer/Island/Path2D/PathFollow2D/Root/AnimationPlayer")
 send_event = "map_picker"
 
 [node name="ColorRect" type="ColorRect" parent="Root/Background" index="0"]
@@ -180,13 +181,14 @@ layout_mode = 2
 
 [node name="Path2D" type="Path2D" parent="Root/CenterContainer/Island" index="0"]
 position = Vector2(-946, -446)
-curve = SubResource("Curve2D_dyenm")
+curve = SubResource("Curve2D_3j438")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Root/CenterContainer/Island/Path2D" index="0"]
-position = Vector2(963, 432)
+position = Vector2(937, 453)
 rotation = 0.000318279
-progress = 5614.7
+progress = 1220.51
 rotates = false
+metadata/_edit_lock_ = true
 
 [node name="Root" type="Control" parent="Root/CenterContainer/Island/Path2D/PathFollow2D" index="0"]
 layout_mode = 3

@@ -73,9 +73,12 @@ theme_override_constants/margin_bottom = 50
 
 [node name="PageRouterContainer" parent="Board/BoardMargin" index="0" instance=ExtResource("2_dmxuy")]
 layout_mode = 2
+current_tab = 1
 
 [node name="FirstPage" type="Control" parent="Board/BoardMargin/PageRouterContainer" index="1"]
+visible = false
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="Board/BoardMargin/PageRouterContainer/FirstPage" index="0"]
 layout_mode = 1
@@ -167,8 +170,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="QuizProblemPage" parent="Board/BoardMargin/PageRouterContainer" index="2" instance=ExtResource("10_jfxo7")]
-visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="PageRouter" parent="Board/BoardMargin/PageRouterContainer/QuizProblemPage" index="1" node_paths=PackedStringArray("page_router_container") instance=ExtResource("7_xwpdj")]
 page_router_container = NodePath("../..")
@@ -177,6 +180,7 @@ route_type = 2
 [node name="EndPage" type="Control" parent="Board/BoardMargin/PageRouterContainer" index="3"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Board/BoardMargin/PageRouterContainer/EndPage" index="0"]
 layout_mode = 1

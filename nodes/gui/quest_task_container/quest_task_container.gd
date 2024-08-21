@@ -20,4 +20,3 @@ func add_task(task: EcoQuestTask) -> void:
 	var gui: QuestTaskGUI = eco_quest_task_gui.instantiate()
 	gui.task = task
 	add_child(gui)
-

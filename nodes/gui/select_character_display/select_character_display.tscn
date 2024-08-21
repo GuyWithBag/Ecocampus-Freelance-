@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6uuamc65bqup"]
+[gd_scene load_steps=20 format=3 uid="uid://b6uuamc65bqup"]
 
 [ext_resource type="Texture2D" uid="uid://cn233vrb5i466" path="res://assets/character/player_girl/girl.png" id="1_3o5pj"]
 [ext_resource type="Theme" uid="uid://cd55r8awc3jgy" path="res://themes/main_theme.tres" id="1_n7hw7"]
@@ -31,7 +31,61 @@ shadow_size = 20
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(10, 5)
 
-[node name="SelectCharacterDisplay" type="CenterContainer" node_paths=PackedStringArray("sprites_switcher", "gender_label", "to_map_picker")]
+[sub_resource type="Animation" id="Animation_mgmqe"]
+resource_name = "from_left"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(-1200, -158), Vector2(-252, -158)]
+}
+
+[sub_resource type="Animation" id="Animation_4anhh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-252, -158)]
+}
+
+[sub_resource type="Animation" id="Animation_i7f2y"]
+resource_name = "from_right"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(1200, -158), Vector2(-252, -158)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_he4fw"]
+_data = {
+"RESET": SubResource("Animation_4anhh"),
+"from_left": SubResource("Animation_mgmqe"),
+"from_right": SubResource("Animation_i7f2y")
+}
+
+[node name="SelectCharacterDisplay" type="CenterContainer" node_paths=PackedStringArray("sprites_switcher", "gender_label", "to_map_picker", "animation_player")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -43,22 +97,30 @@ theme = ExtResource("1_n7hw7")
 script = ExtResource("1_wybeh")
 player_data = ExtResource("3_nks4u")
 gender = 2
-sprites_switcher = NodePath("VBoxContainer/SpritesSwitcher")
-gender_label = NodePath("VBoxContainer/GenderLabel")
+sprites_switcher = NodePath("Root/VBoxContainer/SpritesSwitcher")
+gender_label = NodePath("Root/VBoxContainer/GenderLabel")
 to_map_picker = NodePath("ToMapPicker")
+animation_player = NodePath("AnimationPlayer")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Root" type="Control" parent="."]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root"]
+layout_mode = 2
+offset_left = -252.0
+offset_top = -158.0
+offset_right = 251.0
+offset_bottom = 158.0
 theme_override_constants/separation = 20
 
-[node name="SpritesSwitcher" type="TabContainer" parent="VBoxContainer"]
+[node name="SpritesSwitcher" type="TabContainer" parent="Root/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_6mofy")
 current_tab = 1
 clip_tabs = false
 tabs_visible = false
 
-[node name="Male" type="TextureRect" parent="VBoxContainer/SpritesSwitcher"]
+[node name="Male" type="TextureRect" parent="Root/VBoxContainer/SpritesSwitcher"]
 visible = false
 use_parent_material = true
 layout_mode = 2
@@ -66,7 +128,7 @@ texture = SubResource("AtlasTexture_0sor3")
 stretch_mode = 3
 metadata/_tab_index = 0
 
-[node name="Female" type="TextureRect" parent="VBoxContainer/SpritesSwitcher"]
+[node name="Female" type="TextureRect" parent="Root/VBoxContainer/SpritesSwitcher"]
 use_parent_material = true
 layout_mode = 2
 texture = SubResource("AtlasTexture_mcx0f")
@@ -74,25 +136,31 @@ stretch_mode = 5
 flip_h = true
 metadata/_tab_index = 1
 
-[node name="GenderLabel" type="Label" parent="VBoxContainer"]
+[node name="GenderLabel" type="Label" parent="Root/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Female Character"
 label_settings = SubResource("LabelSettings_dj53l")
 horizontal_alignment = 1
 
-[node name="OnControlTapped" parent="VBoxContainer" node_paths=PackedStringArray("control") instance=ExtResource("4_4nsny")]
+[node name="OnControlTapped" parent="Root/VBoxContainer" node_paths=PackedStringArray("control") instance=ExtResource("4_4nsny")]
 control = NodePath("..")
 
-[node name="OnControlTappedThenScale" parent="VBoxContainer" node_paths=PackedStringArray("node", "control") instance=ExtResource("8_0csdj")]
+[node name="OnControlTappedThenScale" parent="Root/VBoxContainer" node_paths=PackedStringArray("node", "control") instance=ExtResource("8_0csdj")]
 node = NodePath("../SpritesSwitcher")
 control = NodePath("..")
 
-[node name="ButtonAudioPlayer" parent="VBoxContainer" instance=ExtResource("9_q5tkc")]
+[node name="ButtonAudioPlayer" parent="Root/VBoxContainer" instance=ExtResource("9_q5tkc")]
 audio = ExtResource("10_1aps5")
 
 [node name="ToMapPicker" parent="." instance=ExtResource("7_m8fta")]
 to_scene = "res://nodes/screens/map_picker/map_picker.tscn"
 
-[connection signal="tapped" from="VBoxContainer/OnControlTapped" to="." method="_on_on_control_tapped"]
-[connection signal="tapped" from="VBoxContainer/OnControlTapped" to="VBoxContainer/ButtonAudioPlayer" method="_on_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_he4fw")
+}
+speed_scale = 1.3
+
+[connection signal="tapped" from="Root/VBoxContainer/OnControlTapped" to="." method="_on_on_control_tapped"]
+[connection signal="tapped" from="Root/VBoxContainer/OnControlTapped" to="Root/VBoxContainer/ButtonAudioPlayer" method="_on_pressed"]

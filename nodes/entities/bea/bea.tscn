@@ -8,12 +8,32 @@
 [node name="Bea" instance=ExtResource("1_ahu1d")]
 data = ExtResource("2_d4oei")
 dialogue = ExtResource("3_1xe0o")
+on_tap_jump = null
+on_tap_face_player = null
 
 [node name="TapHitBox" parent="CanvasLayer/Root" index="0"]
 offset_left = -123.0
 offset_top = -334.0
 offset_right = 107.0
 offset_bottom = 43.0
+
+[node name="OnWalk" parent="StateChart/Root/Enabled/Animation/Left/Idle" index="0"]
+delay_in_seconds = "0.0"
+
+[node name="OnIdle" parent="StateChart/Root/Enabled/Animation/Left/Walk" index="0"]
+delay_in_seconds = "0.0"
+
+[node name="OnWalk" parent="StateChart/Root/Enabled/Animation/Right/Idle" index="0"]
+delay_in_seconds = "0.0"
+
+[node name="OnIdle" parent="StateChart/Root/Enabled/Animation/Right/Walk" index="0"]
+delay_in_seconds = "0.0"
+
+[node name="OnWalk" parent="StateChart/Root/Enabled/Mobility/Idle" index="0"]
+delay_in_seconds = "0.0"
+
+[node name="Idle" parent="StateChart/Root/Enabled/Mobility/Walk" index="0"]
+delay_in_seconds = "0.0"
 
 [node name="DialogueStarter" parent="Components" index="4"]
 dialogue = ExtResource("3_1xe0o")

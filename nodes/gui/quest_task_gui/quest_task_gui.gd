@@ -25,4 +25,3 @@ func update() -> void:
 		label.hide()
 		return
 	label.input([task.description, str(task.get_counter().current), str(task.get_counter().maximum)])
-

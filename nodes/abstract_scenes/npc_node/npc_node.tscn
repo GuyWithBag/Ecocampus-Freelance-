@@ -28,6 +28,8 @@ _data = {
 
 [node name="NPCNode" instance=ExtResource("1_4vfvx")]
 script = ExtResource("2_1hpoc")
+on_tap_jump = true
+on_tap_face_player = true
 
 [node name="TapHitBox" parent="CanvasLayer/Root" index="0"]
 mouse_default_cursor_shape = 2
@@ -41,6 +43,7 @@ animation_name = &"idle_left"
 script = ExtResource("3_o4eif")
 to = NodePath("../../Walk")
 event = &"walk"
+delay_in_seconds = "0.0"
 
 [node name="Walk" type="Node" parent="StateChart/Root/Enabled/Animation/Left" index="2"]
 script = ExtResource("2_3l8bg")
@@ -51,6 +54,7 @@ animation_name = &"walk_left"
 script = ExtResource("3_o4eif")
 to = NodePath("../../Idle")
 event = &"idle"
+delay_in_seconds = "0.0"
 
 [node name="Right" parent="StateChart/Root/Enabled/Animation" index="1"]
 initial_state = NodePath("Walk")
@@ -64,6 +68,7 @@ animation_name = &"idle_right"
 script = ExtResource("3_o4eif")
 to = NodePath("../../Walk")
 event = &"walk"
+delay_in_seconds = "0.0"
 
 [node name="Walk" type="Node" parent="StateChart/Root/Enabled/Animation/Right" index="2"]
 script = ExtResource("2_3l8bg")
@@ -74,11 +79,13 @@ animation_name = &"walk_right"
 script = ExtResource("3_o4eif")
 to = NodePath("../../Idle")
 event = &"idle"
+delay_in_seconds = "0.0"
 
 [node name="OnWalk" type="Node" parent="StateChart/Root/Enabled/Mobility/Idle" index="0"]
 script = ExtResource("3_o4eif")
 to = NodePath("../../Walk")
 event = &"walk"
+delay_in_seconds = "0.0"
 
 [node name="Walk" type="Node" parent="StateChart/Root/Enabled/Mobility" index="1"]
 script = ExtResource("4_5t7p8")
@@ -87,6 +94,7 @@ script = ExtResource("4_5t7p8")
 script = ExtResource("3_o4eif")
 to = NodePath("../../Idle")
 event = &"idle"
+delay_in_seconds = "0.0"
 
 [node name="ShadowCircle" parent="Sprites" index="0"]
 scale = Vector2(0.229306, 0.168255)

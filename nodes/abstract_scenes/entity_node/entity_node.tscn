@@ -115,6 +115,7 @@ script = ExtResource("6_nd87m")
 script = ExtResource("7_kiuy1")
 to = NodePath("../../Disabled")
 event = &"disabled"
+delay_in_seconds = "0.0"
 
 [node name="Animation" type="Node" parent="StateChart/Root/Enabled"]
 script = ExtResource("5_d0dfx")
@@ -128,6 +129,7 @@ initial_state = NodePath("../AnimationPlayerState")
 script = ExtResource("7_kiuy1")
 to = NodePath("../../Right")
 event = &"right"
+delay_in_seconds = "0.0"
 
 [node name="Right" type="Node" parent="StateChart/Root/Enabled/Animation"]
 script = ExtResource("5_d0dfx")
@@ -136,6 +138,7 @@ script = ExtResource("5_d0dfx")
 script = ExtResource("7_kiuy1")
 to = NodePath("../../Left")
 event = &"left"
+delay_in_seconds = "0.0"
 
 [node name="Mobility" type="Node" parent="StateChart/Root/Enabled"]
 script = ExtResource("5_d0dfx")
@@ -151,6 +154,7 @@ script = ExtResource("8_ued26")
 script = ExtResource("7_kiuy1")
 to = NodePath("../../Enabled")
 event = &"enabled"
+delay_in_seconds = "0.0"
 
 [node name="Components" type="Node" parent="."]
 

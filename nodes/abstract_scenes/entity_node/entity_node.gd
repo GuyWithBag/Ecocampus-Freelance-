@@ -98,6 +98,9 @@ signal interacted
 		if !is_node_ready(): 
 			await ready
 		two_point_5d_node_simulator.custom_position = custom_position
+		
+@export var on_tap_jump: bool
+@export var on_tap_face_player: bool
 
 @export_group("Dependencies")
 @export var state_chart: StateChart
@@ -244,6 +247,43 @@ func _on_tap_hit_box_pressed() -> void:
 			show_interact_dialog(interact_description)
 		else: 
 			_on_interact()
+			
+	if on_tap_jump: 
+		jump_animation()
+		
+	if on_tap_face_player: 
+		face_player()
+
+
+func jump_animation() -> void: 
+	var tween_arg: TweenArguments = TweenArguments.new()
+	
+	var tween: Tween = tween_arg.create_tween(get_tree())
+	
+	var orig_pos: Vector2 = default_entity_sprite.position
+	tween.tween_property(default_entity_sprite, "position:y", orig_pos.y + -75 * two_point_5d_node_simulator.get_space_simulator().get_space_scale(default_entity_sprite.global_position, walk.base_values.values.speed), 0.3)
+	tween.tween_property(default_entity_sprite, "position:y", orig_pos.y, 0.3)
+	
+	tween.play()
+
+
+func face_player() -> void: 
+	if data is NPCEntity: 
+		var player_direction: Vector2 = global_position.direction_to(PlayerManager.player.global_position)
+		if data.facing_left: 
+			if player_direction.x > 0: 
+				default_entity_sprite.flip_h = true
+			else: 
+				default_entity_sprite.flip_h = false
+			return
+		
+		if player_direction.x < 0: 
+			default_entity_sprite.flip_h = true
+		else: 
+			default_entity_sprite.flip_h = false
+			
+		
+		
 
 
 func _on_changed_target() -> void: 

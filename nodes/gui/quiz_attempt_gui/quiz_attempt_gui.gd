@@ -44,6 +44,8 @@ func _on_quiz_attempt_completed() -> void:
 	score.input([str(quiz_attempt.score), str(quiz_attempt.quiz.maximum_score)])
 	if quiz.has_victory(): 
 		play_again_button.disabled = true
+		SaveManager.save_game()
+		SaveManager.save_game_to_file(true)
 
 
 func _on_play_pressed() -> void: 

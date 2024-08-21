@@ -45,10 +45,8 @@ func _activated() -> void:
 	
 func _deactivated() -> void: 
 	#fade_out.process_enabled = true
-	if music_volume_slider.mute: 
-		music_volume_slider.mute = true
-	else: 
-		music_volume_slider.mute = false
+
+	music_volume_slider.mute = false
 	
 	fade_in.process_enabled = true
 	fade_in.finished.connect(

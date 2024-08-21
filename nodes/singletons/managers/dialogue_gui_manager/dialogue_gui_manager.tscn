@@ -65,7 +65,7 @@ mouse_filter = 2
 theme_override_constants/margin_left = 200
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 200
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_bottom = 30
 
 [node name="DialogueBox" parent="DialogueGUIs/ActingContainer/MarginContainer" index="0" node_paths=PackedStringArray("acting_container") instance=ExtResource("2_n6fh7")]
 layout_mode = 2

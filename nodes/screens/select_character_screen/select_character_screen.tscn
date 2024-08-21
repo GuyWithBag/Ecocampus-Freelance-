@@ -45,3 +45,4 @@ layout_mode = 2
 [node name="SelectCharacterDisplay2" parent="Root/HBoxContainer" index="1" instance=ExtResource("2_f7u8v")]
 layout_mode = 2
 gender = 1
+animation_direction = "from_right"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bc1txwrwrlhfu"]
+[gd_scene load_steps=13 format=3 uid="uid://bc1txwrwrlhfu"]
 
 [ext_resource type="PackedScene" uid="uid://cm6jeskbiise6" path="res://nodes/abstract_scenes/level_node/level_node.tscn" id="1_4fkii"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="2_epnou"]
 [ext_resource type="PackedScene" uid="uid://ci8jg3d2e7j5p" path="res://nodes/components/player_sprite_display/player_sprite_display.tscn" id="2_xrh1o"]
 [ext_resource type="PackedScene" uid="uid://ceslx0shjft6" path="res://nodes/storage_nodes/bio_degradable_trash_can/bio_degradable_trash_can.tscn" id="4_7mhfn"]
 [ext_resource type="Texture2D" uid="uid://bpe1l60j6nkr4" path="res://assets/background/drawn_camera_pictures/trash_cans_bg.png" id="4_862hi"]
@@ -23,7 +24,15 @@ disable_player_tap_navigation = true
 [node name="GUIs" parent="." index="0"]
 layer = 4
 
-[node name="Root" type="Control" parent="GUIs" index="0"]
+[node name="StateChartDebugger" parent="GUIs" index="0" instance=ExtResource("2_epnou")]
+visible = false
+offset_left = 76.0
+offset_top = 680.0
+offset_right = -1143.0
+offset_bottom = -61.0
+initial_node_to_watch = NodePath("../../Entities/Living/PlayerNode")
+
+[node name="Root" type="Control" parent="GUIs" index="1"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

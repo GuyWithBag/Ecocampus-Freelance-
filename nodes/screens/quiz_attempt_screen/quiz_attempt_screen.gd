@@ -72,4 +72,3 @@ func _on_quiz_attempt_gui_deactivated() -> void:
 func close() -> void: 
 	GUIManager.set_gui_active(self, false)
 	
-

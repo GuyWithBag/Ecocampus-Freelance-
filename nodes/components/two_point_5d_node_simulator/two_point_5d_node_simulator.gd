@@ -36,13 +36,17 @@ func _ready() -> void:
 	await get_tree().physics_frame
 	set_process(true)
 	
+	
+func get_space_simulator() -> TwoPoint5DSpaceSimulator: 
+	return get_tree().get_first_node_in_group("TwoPoint5DSpaceSimulator")
+	
 
 func _process(_delta: float) -> void: 
 	#printerr(node)
 	if disabled || !node || !node.is_node_ready(): 
 		return
 	if !is_instance_valid(space_simulator): 
-		space_simulator = get_tree().get_first_node_in_group("TwoPoint5DSpaceSimulator")
+		space_simulator = get_space_simulator()
 	if !space_simulator:
 		return
 	

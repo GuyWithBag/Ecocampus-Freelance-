@@ -42,7 +42,7 @@ _data = {
 "default": SubResource("Animation_wkat3")
 }
 
-[node name="SavingLabel" instance=ExtResource("1_tr6wl")]
+[node name="SavingLabel" groups=["SavingLabel"] instance=ExtResource("1_tr6wl")]
 script = ExtResource("2_t8lwl")
 
 [node name="Label" type="Label" parent="." index="0"]
@@ -51,11 +51,11 @@ offset_left = -120.0
 offset_top = -59.0
 offset_right = 149.0
 offset_bottom = 21.0
-text = "Saving..."
+text = "Saving...  "
 label_settings = ExtResource("2_rjpkb")
 horizontal_alignment = 1
 vertical_alignment = 1
-visible_ratio = -0.111111
+visible_ratio = -0.0909091
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {

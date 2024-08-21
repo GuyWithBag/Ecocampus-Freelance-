@@ -20,6 +20,13 @@ class_name SelectCharacterDisplay
 @export var to_map_picker: ChangeSceneComponent
 #@export_file("*.ogv") var cutscene_path: String
 
+@export var animation_player: AnimationPlayer
+@export var animation_direction: String = "from_left"
+
+
+func _ready() -> void: 
+	animation_player.play(animation_direction)
+
 
 func _on_on_control_tapped() -> void:
 	player_data.gender = gender
