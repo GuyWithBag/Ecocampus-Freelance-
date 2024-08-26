@@ -1,28 +1,43 @@
-[gd_scene load_steps=8 format=3 uid="uid://b60walfcy1mey"]
+[gd_scene load_steps=10 format=3 uid="uid://b60walfcy1mey"]
 
 [ext_resource type="PackedScene" uid="uid://dls07q71n33yn" path="res://nodes/abstract_scenes/storage_node/storage_node.tscn" id="1_wm5wv"]
 [ext_resource type="Script" path="res://nodes/abstract_scenes/trash_can_node/trash_can_node.gd" id="2_0imu6"]
 [ext_resource type="Script" path="res://scripts/resources/inventory.gd" id="3_gifhl"]
 [ext_resource type="Script" path="res://scripts/resources/item_stack.gd" id="3_soqlk"]
 [ext_resource type="Texture2D" uid="uid://ng63gntckj62" path="res://assets/trash.png" id="3_tyo2g"]
+[ext_resource type="Shader" path="res://resources/shaders/outline_inline.gdshader" id="5_mr8s0"]
 
 [sub_resource type="Resource" id="Resource_0ednp"]
 script = ExtResource("3_gifhl")
 items = Array[ExtResource("3_soqlk")]([])
 max_items = -1
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lf6vd"]
 size = Vector2(298, 475)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_emmqv"]
+shader = ExtResource("5_mr8s0")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
 [node name="TrashCanNode" groups=["TrashCan"] instance=ExtResource("1_wm5wv")]
 script = ExtResource("2_0imu6")
 can_take = 0
+goal_stack = 10
 inventory = SubResource("Resource_0ednp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseDragDropArea" index="0"]
 position = Vector2(2.5, -294)
 shape = SubResource("RectangleShape2D_lf6vd")
+
+[node name="OnHoveredApplyMaterial" parent="CanvasLayer/Root/TapHitBox" index="0" node_paths=PackedStringArray("control")]
+material = SubResource("ShaderMaterial_emmqv")
+control = NodePath("..")
 
 [node name="EntitySprite" parent="Sprites" index="1"]
 position = Vector2(5, -411)

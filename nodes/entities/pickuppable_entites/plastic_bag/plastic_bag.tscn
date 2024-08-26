@@ -1,26 +1,49 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpsxhkc4aak0g"]
+[gd_scene load_steps=18 format=3 uid="uid://bpsxhkc4aak0g"]
 
 [ext_resource type="PackedScene" uid="uid://77dhb6ck4eyt" path="res://nodes/abstract_scenes/pickuppable_entity/pickuppable_entity.tscn" id="1_qq2vx"]
 [ext_resource type="Resource" uid="uid://23ubbrkj81uh" path="res://resources/items/plastic_bag.tres" id="2_86hal"]
 [ext_resource type="Resource" uid="uid://djr5dksp1iyt" path="res://resources/quests/con_quest.tres" id="2_atxxs"]
+[ext_resource type="Resource" uid="uid://dvsirph1tn1ko" path="res://resources/entity/professor_luna.tres" id="3_lns5o"]
 [ext_resource type="Script" path="res://scripts/resources/item_stack.gd" id="3_s5ogb"]
 [ext_resource type="Script" path="res://scripts/resources/inventory.gd" id="4_spif0"]
 [ext_resource type="Script" path="res://scripts/resources/item_entity.gd" id="5_ujb45"]
 [ext_resource type="Texture2D" uid="uid://c8b36my8htck6" path="res://assets/collect_item/plastic_bag.png" id="6_cv57s"]
 [ext_resource type="Script" path="res://scripts/resources/string_formatter.gd" id="6_eceyj"]
+[ext_resource type="Script" path="res://addons/node_components/scripts/resources/point_counter.gd" id="6_umxr3"]
 [ext_resource type="Script" path="res://scripts/resources/rich_label_text.gd" id="7_e2b8y"]
+
+[sub_resource type="Resource" id="Resource_bgbpy"]
+script = ExtResource("6_umxr3")
+starting_value = 1.0
+minimum = 0.0
+maximum = 12.0
+cant_be_added = false
+cant_be_subtracted = false
+when_maximum_stay = true
+when_minmum_stay = false
+reset_after_maximum_exceeded = false
+reset_after_minimum_exceeded = false
+reset_after_maximum_hit = false
+reset_after_minimum_hit = false
+rounded_off = false
+disabled = false
+save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_87mav"]
 script = ExtResource("3_s5ogb")
+stack = SubResource("Resource_bgbpy")
 model = ExtResource("2_86hal")
 stack_starting_value = 1.0
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_bm6mt"]
 script = ExtResource("4_spif0")
 items = Array[ExtResource("3_s5ogb")]([SubResource("Resource_87mav")])
 max_items = -1
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_hq2ec"]
 script = ExtResource("5_ujb45")
@@ -32,6 +55,7 @@ gender = 0
 facing_left = false
 group = "Entity"
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_cwuf5"]
 script = ExtResource("6_eceyj")
@@ -46,6 +70,7 @@ texts = Array[String]([])
 
 [node name="PlasticBag" instance=ExtResource("1_qq2vx")]
 need_quest_before_enabled = ExtResource("2_atxxs")
+quest_carrier = ExtResource("3_lns5o")
 inventory = SubResource("Resource_bm6mt")
 data = SubResource("Resource_hq2ec")
 interact_description = SubResource("Resource_7jneh")

@@ -3,6 +3,10 @@ class_name SettingsIconButton
 
 @export var icon: TextureRect
 
+static func this() -> SettingsIconButton: 
+	return GameManager.get_tree().get_first_node_in_group("SettingsIconButton")
+
+
 func _on_pressed() -> void:
 	GUIManager.toggle_gui(GUIManager.settings_menu)
 	update()

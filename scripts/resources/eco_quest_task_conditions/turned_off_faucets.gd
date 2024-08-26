@@ -29,9 +29,11 @@ func _on_event_called(event: String, _by: Node, _args: Array) -> void:
 	
 	
 func update_current() -> void: 
+	#await GameManager.get_tree().process_frame
 	counter.current = PlayerManager.player_data.faucets_turned_off
 	if counter.current == maximum_points: 
 		counter.max_out()
+	#printerr(counter.current)
 	
 	
 func _on_faucet_turned_off() -> void: 

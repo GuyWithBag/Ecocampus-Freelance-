@@ -28,6 +28,11 @@ class_name QuizAttemptScreen
 
 @export var reaction_sprites: TabContainer
 
+
+static func this() -> QuizAttemptScreen: 
+	return GameManager.get_tree().get_first_node_in_group("QuizAttemptScreen")
+	
+
 static func display(q: Quiz, _entity_answering: Entity) -> QuizAttemptScreen: 
 	var screen: QuizAttemptScreen = GUIManager.quiz_attempt_screen
 	GUIManager.set_gui_active(screen, true)

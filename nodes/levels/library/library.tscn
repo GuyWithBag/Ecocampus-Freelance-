@@ -162,6 +162,7 @@ scale = Vector2(0.9, 0.9)
 navigation_polygon = SubResource("NavigationPolygon_8btix")
 
 [node name="MainCamera" parent="Cameras" index="0" node_paths=PackedStringArray("follow_node")]
+offset = Vector2(0, -150)
 limit_top = -362
 follow_node = NodePath("../../Entities/Living/PlayerNode")
 

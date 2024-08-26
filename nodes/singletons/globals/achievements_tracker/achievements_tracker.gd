@@ -24,6 +24,11 @@ class_name AchievementsTracker
 		update_victory()
 		
 		
+@export var collection: Array[Achievement]: 
+	get: 
+		return achievements_collection.collection
+		
+		
 @export var medals: PointCounterComponent
 @export var print_color: PrintColor: 
 	set(value): 
@@ -61,6 +66,9 @@ func update_victory() -> void:
 			#printerr(item.unlocked)
 			#return item.unlocked
 	#))
+	#for i: Achievement in achievements_collection.collection: 
+		#printerr(i.is_unlocked)
+		
 	if achievements_collection.collection.all(
 		func(item: Achievement): 
 			return item.is_unlocked

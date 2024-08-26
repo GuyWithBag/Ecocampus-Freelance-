@@ -1,25 +1,48 @@
-[gd_scene load_steps=14 format=3 uid="uid://bm3t8igvjt658"]
+[gd_scene load_steps=17 format=3 uid="uid://bm3t8igvjt658"]
 
 [ext_resource type="PackedScene" uid="uid://77dhb6ck4eyt" path="res://nodes/abstract_scenes/pickuppable_entity/pickuppable_entity.tscn" id="1_35r7o"]
 [ext_resource type="Resource" uid="uid://c2ms3lvdy84n5" path="res://resources/items/banana_peel.tres" id="2_evcxx"]
+[ext_resource type="Resource" uid="uid://cr75riymavve3" path="res://resources/entity/professor_grayson.tres" id="2_y8cfy"]
 [ext_resource type="Script" path="res://scripts/resources/item_stack.gd" id="3_5csbt"]
 [ext_resource type="Script" path="res://scripts/resources/inventory.gd" id="4_p0mbv"]
+[ext_resource type="Script" path="res://addons/node_components/scripts/resources/point_counter.gd" id="5_3t4hu"]
 [ext_resource type="Script" path="res://scripts/resources/item_entity.gd" id="5_aaypy"]
 [ext_resource type="Texture2D" uid="uid://cjn8l7lvhkm7s" path="res://assets/collect_item/banana_peel.png" id="6_k6hhx"]
 [ext_resource type="Script" path="res://scripts/resources/string_formatter.gd" id="6_l8x74"]
 [ext_resource type="Script" path="res://scripts/resources/rich_label_text.gd" id="7_obvx4"]
 
+[sub_resource type="Resource" id="Resource_ftctl"]
+script = ExtResource("5_3t4hu")
+starting_value = 1.0
+minimum = 0.0
+maximum = 12.0
+cant_be_added = false
+cant_be_subtracted = false
+when_maximum_stay = true
+when_minmum_stay = false
+reset_after_maximum_exceeded = false
+reset_after_minimum_exceeded = false
+reset_after_maximum_hit = false
+reset_after_minimum_hit = false
+rounded_off = false
+disabled = false
+save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
+
 [sub_resource type="Resource" id="Resource_vymub"]
 script = ExtResource("3_5csbt")
+stack = SubResource("Resource_ftctl")
 model = ExtResource("2_evcxx")
 stack_starting_value = 1.0
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_quoql"]
 script = ExtResource("4_p0mbv")
 items = Array[ExtResource("3_5csbt")]([SubResource("Resource_vymub")])
 max_items = -1
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_n1fg8"]
 script = ExtResource("5_aaypy")
@@ -31,6 +54,7 @@ gender = 0
 facing_left = false
 group = "Entity"
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_hq1c4"]
 script = ExtResource("6_l8x74")
@@ -44,6 +68,7 @@ format = SubResource("Resource_hq1c4")
 texts = Array[String]([])
 
 [node name="BananaPeel" instance=ExtResource("1_35r7o")]
+quest_carrier = ExtResource("2_y8cfy")
 inventory = SubResource("Resource_quoql")
 data = SubResource("Resource_n1fg8")
 interact_description = SubResource("Resource_ebfq3")

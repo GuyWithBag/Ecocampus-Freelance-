@@ -9,6 +9,8 @@ signal item_accepted(item_stack: ItemStack)
 @export var drop_audio: AudioManagerPlayer
 @export var allowed_items: Array[ItemModel] = []
 @export var dont_take_item: bool
+@export var drag_drop_area: MouseDragDropArea
+@export var hide_when_dropped: bool = true
 
 var is_item_accepted: bool
 
@@ -19,6 +21,13 @@ func _on_mouse_drag_drop_area_dropped(drag_data: Dictionary) -> void:
 	if !dont_take_item: 
 		inventory.take_item_from_inventory(from_inventory, item, self)
 	drop_audio.play()
+	
+	if hide_when_dropped: 
+		disabled = true
+		hide() 
+	drag_drop_area.monitorable = false
+	drag_drop_area.monitoring = false
+	
 	InventoryGUI.this().update()
 
 

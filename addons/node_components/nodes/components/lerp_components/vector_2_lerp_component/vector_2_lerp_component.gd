@@ -77,4 +77,3 @@ func _is_finished() -> void:
 	if reset_current_when_finished && !Engine.is_editor_hint(): 
 		current = Vector2.ZERO
 	super._is_finished()
-

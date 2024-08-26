@@ -12,8 +12,8 @@ func _ready() -> void:
 	var video: VideoCutscenePlayer = VideoCutscenePlayer.this()
 	if video.visible: 
 		await video.deactivated
-		animation_player.play("intro")
-		GUIManager.animation_player.play("intro")
+	animation_player.play("intro")
+	GUIManager.intro_animation.play()
 
 
 func _notification(what: int) -> void: 

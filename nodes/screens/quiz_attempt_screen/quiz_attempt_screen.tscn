@@ -23,7 +23,7 @@ volume_db = 0.0
 change_bus = false
 bus = &"Music"
 
-[node name="QuizAttemptScreen" node_paths=PackedStringArray("assesment_music", "quiz_attempt_gui", "idle", "happy", "sad", "reaction_sprites") instance=ExtResource("1_imule")]
+[node name="QuizAttemptScreen" node_paths=PackedStringArray("assesment_music", "quiz_attempt_gui", "idle", "happy", "sad", "reaction_sprites") groups=["QuizAttemptScreen"] instance=ExtResource("1_imule")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

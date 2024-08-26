@@ -1,25 +1,48 @@
-[gd_scene load_steps=14 format=3 uid="uid://bfnapusrrbksh"]
+[gd_scene load_steps=17 format=3 uid="uid://bfnapusrrbksh"]
 
 [ext_resource type="PackedScene" uid="uid://77dhb6ck4eyt" path="res://nodes/abstract_scenes/pickuppable_entity/pickuppable_entity.tscn" id="1_8jn73"]
 [ext_resource type="Resource" uid="uid://4bd0gl2jjueb" path="res://resources/items/coffee_cup.tres" id="2_agvcg"]
 [ext_resource type="Texture2D" uid="uid://crg6wpxxmx4n3" path="res://assets/collect_item/coffee_cup.png" id="2_h64tc"]
+[ext_resource type="Resource" uid="uid://cr75riymavve3" path="res://resources/entity/professor_grayson.tres" id="2_v0fms"]
 [ext_resource type="Script" path="res://scripts/resources/item_stack.gd" id="3_h852v"]
 [ext_resource type="Script" path="res://scripts/resources/inventory.gd" id="4_mq8nk"]
 [ext_resource type="Script" path="res://scripts/resources/item_entity.gd" id="5_brasg"]
+[ext_resource type="Script" path="res://addons/node_components/scripts/resources/point_counter.gd" id="5_djoqa"]
 [ext_resource type="Script" path="res://scripts/resources/string_formatter.gd" id="6_3fo1q"]
 [ext_resource type="Script" path="res://scripts/resources/rich_label_text.gd" id="7_dtg60"]
 
+[sub_resource type="Resource" id="Resource_e50uv"]
+script = ExtResource("5_djoqa")
+starting_value = 1.0
+minimum = 0.0
+maximum = 12.0
+cant_be_added = false
+cant_be_subtracted = false
+when_maximum_stay = true
+when_minmum_stay = false
+reset_after_maximum_exceeded = false
+reset_after_minimum_exceeded = false
+reset_after_maximum_hit = false
+reset_after_minimum_hit = false
+rounded_off = false
+disabled = false
+save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
+
 [sub_resource type="Resource" id="Resource_r3oc2"]
 script = ExtResource("3_h852v")
+stack = SubResource("Resource_e50uv")
 model = ExtResource("2_agvcg")
 stack_starting_value = 1.0
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_wqtld"]
 script = ExtResource("4_mq8nk")
 items = Array[ExtResource("3_h852v")]([SubResource("Resource_r3oc2")])
 max_items = -1
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_1jhie"]
 script = ExtResource("5_brasg")
@@ -31,6 +54,7 @@ gender = 0
 facing_left = false
 group = "Entity"
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_47c6t"]
 script = ExtResource("6_3fo1q")
@@ -44,6 +68,7 @@ format = SubResource("Resource_47c6t")
 texts = Array[String]([])
 
 [node name="CoffeeCup" instance=ExtResource("1_8jn73")]
+quest_carrier = ExtResource("2_v0fms")
 inventory = SubResource("Resource_wqtld")
 data = SubResource("Resource_1jhie")
 interact_description = SubResource("Resource_si0sa")

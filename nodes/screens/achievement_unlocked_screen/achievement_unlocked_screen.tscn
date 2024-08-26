@@ -24,6 +24,10 @@ achievement_unlocked_gui = NodePath("CenterContainer/AchievementUnlockedGUI")
 
 [node name="OnTapSetActive" parent="." index="0" node_paths=PackedStringArray("gui") instance=ExtResource("3_fgxls")]
 layout_mode = 1
+offset_left = -3749.0
+offset_top = -2486.0
+offset_right = 3749.0
+offset_bottom = 2486.0
 gui = NodePath("..")
 
 [node name="BlackOverlay" parent="." index="1" instance=ExtResource("4_ur5s1")]

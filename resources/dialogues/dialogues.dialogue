@@ -71,7 +71,7 @@ Professor Cruz: Good day! Welcome to the College of Nursing.
 Professor Cruz: You know, here at [b]Cavite State University[/b], we're all about learning and keeping things tidy. 
 Professor Cruz: Lately, we've been facing an issue with plastic waste piling up around campus, despite the [b]campus-wide ban on plastic[/b]. 
 {{PlayerManager.player.data.custom_name}}: I see. How can I help?
-Professor Cruz: Glad you're on board! So, here's the deal: I need your help picking up non- biodegradable waste. You know, stuff like [b]PLASTIC BAGS[/b] and [b]JUICEBOX[/b] that don't break down easily. 
+Professor Cruz: Glad you're on board! So, here's the deal: I need your help picking up non- biodegradable waste. You know, stuff like [b]PLASTIC BAGS[/b] that don't break down easily. 
 Professor Cruz: If you can collect [b]5 pieces[/b] of this junk scattered around, it'll make a huge difference to our school's vibe. 
 Professor Cruz: Think you're up for the challenge?
 {{PlayerManager.player.data.custom_name}}: Absolutely! I'll get right on it, Professor.
@@ -139,7 +139,7 @@ Doctor Madrigal: I have challenge for you. As you know, our school is committed 
 {{PlayerManager.player.data.custom_name}}: Waste disposal? How can i help with that?
 Doctor Madrigal: I'm glad you asked. I want you to lead an initiative to [b]properly sort waste into designated bins[/b] for recyclable, biodegradable and non-biodegradable, but not everyone knows which items go where. 
 {{PlayerManager.player.data.custom_name}}: That sounds like a great idea! I’ll make sure to educate everyone on the proper sorting of waste. 
-Doctor Madrigal: And don’t forget to lead by example. Make sure you’re sorting your own  waste properly too. 
+Doctor Madrigal: And don’t forget to lead by example. Make sure you’re sorting your own waste properly too. 
 {{PlayerManager.player.data.custom_name}}: Of course! I’ll do my best to set a good example for everyone else. 
 Doctor Madrigal: I have faith in you. I’m confident we can make our school a cleaner and more sustainable place. 
 {{PlayerManager.player.data.custom_name}}: Thanks, teacher. I won’t let you down.
@@ -198,9 +198,9 @@ do dialogue_response_handler.respond("start_quest")
 => END
 
 ~ zilong_received_juice_boxes
-{{PlayerManager.player.data.custom_name}}: Here’s the three juice box
+{{PlayerManager.player.data.custom_name}}: Here’s the [b]five juice boxes[/b]
 Zilong: Excellent! you really helped me a lot. 
-Zilong: Consider these scissors a token of my gratitude.
+Zilong: Consider these [b]scissors[/b] a token of my gratitude.
 => END
 
 ~ annie
@@ -227,7 +227,7 @@ Viktor: No problem! Happy sorting!
 => END
 
 ~ faucet_broken
-{{PlayerManager.player.data.custom_name}}: The faucet is broken and still leaking. I'll need some tools to fix it. 
+{{PlayerManager.player.data.custom_name}}: The faucet is broken and still leaking. I'll need a tool to fix it. 
 => END
 
 ~ need_ladder
@@ -236,4 +236,8 @@ Viktor: No problem! Happy sorting!
 
 ~ tied_plastic_bags
 {{PlayerManager.player.data.custom_name}}: It looks like the trash is tangled up in the tree. I need a tool to cut the rope.
+=> END
+
+~ item_is_disabled
+{{PlayerManager.player.data.custom_name}}: I need to talk to {{quest_carrier.custom_name}} first
 => END

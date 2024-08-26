@@ -45,7 +45,7 @@ var completed_tasks_count: int:
 			if task.is_completed: 
 				count += 1
 		return count
-
+var given_item_count: int = 0
 
 func _init() -> void: 
 	percentage_description_format = StringFormatter.new()
@@ -83,9 +83,12 @@ func complete() -> void:
 func give_item_to_player() -> void: 
 	if !objective_completed: 
 		return
-	if !ExtendedQuestSystem.is_quest_completed(self): 
+
+	if given_item_count > 0: 
 		return
 		
+	given_item_count += 1
+	
 	if on_complete_get_new_item: 
 		PlayerManager.player.data.inventory.add_item(on_complete_get_new_item)
 	if !take_items.is_empty(): 

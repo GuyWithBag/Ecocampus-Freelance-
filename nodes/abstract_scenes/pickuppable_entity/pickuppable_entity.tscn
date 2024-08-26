@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://77dhb6ck4eyt"]
+[gd_scene load_steps=17 format=3 uid="uid://77dhb6ck4eyt"]
 
 [ext_resource type="PackedScene" uid="uid://dokfordgw2kk3" path="res://nodes/abstract_scenes/non_living_entity_node/non_living_entity_node.tscn" id="1_d4ii6"]
 [ext_resource type="Script" path="res://nodes/abstract_scenes/pickuppable_entity/pickuppable_entity.gd" id="2_a2l0a"]
 [ext_resource type="PackedScene" uid="uid://b6yh5ahr4kpcw" path="res://nodes/components/on_interact_components/on_interact_pick_up/on_interact_pick_up.tscn" id="3_u3rje"]
+[ext_resource type="Resource" uid="uid://ctqraude2bfgs" path="res://resources/dialogue_arguments/item_is_disabled_dialogue.tres" id="5_ahb7w"]
 [ext_resource type="Script" path="res://scripts/resources/string_formatter.gd" id="5_hjcei"]
 [ext_resource type="Texture2D" uid="uid://bd1l0lam720ha" path="res://placeholder_assets/plastic_bottle_trash.png" id="6_6ar2y"]
 [ext_resource type="Script" path="res://scripts/resources/rich_label_text.gd" id="6_np3jd"]
@@ -44,9 +45,10 @@ bus = &"SFX"
 
 [node name="PickUppableEntity" groups=["QuestEntity"] instance=ExtResource("1_d4ii6")]
 script = ExtResource("2_a2l0a")
-need_quest_before_enabled = null
 display_interact_dialog = false
 interact_description = SubResource("Resource_53h3x")
+dialogue_if_disabled = ExtResource("5_ahb7w")
+disable_tap_hit_box_if_disabled = false
 
 [node name="OnPressedApplyMaterialToNode" parent="CanvasLayer/Root/TapHitBox" index="0" node_paths=PackedStringArray("apply_to_node") instance=ExtResource("7_cgy4r")]
 material = SubResource("ShaderMaterial_ukjcl")

@@ -42,9 +42,10 @@ region = Rect2(82, 144, 1403, 511)
 atlas = ExtResource("4_cpr3a")
 region = Rect2(82, 144, 1403, 511)
 
-[node name="MainMenu" instance=ExtResource("1_c5phn")]
+[node name="MainMenu" node_paths=PackedStringArray("body") instance=ExtResource("1_c5phn")]
 script = ExtResource("2_l406y")
 print_color = SubResource("Resource_ntkf8")
+body = NodePath("Root/CenterContainer/Body")
 
 [node name="Background" parent="Root/Background" index="0"]
 texture = ExtResource("2_q4bpm")
@@ -57,40 +58,40 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/CenterContainer" index="0"]
+[node name="Body" type="VBoxContainer" parent="Root/CenterContainer" index="0"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Title" type="TextureRect" parent="Root/CenterContainer/VBoxContainer" index="0"]
+[node name="Title" type="TextureRect" parent="Root/CenterContainer/Body" index="0"]
 custom_minimum_size = Vector2(1600, 300)
 layout_mode = 2
 texture = SubResource("AtlasTexture_qt5cm")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TitlePlaceholder" type="Label" parent="Root/CenterContainer/VBoxContainer" index="1"]
+[node name="TitlePlaceholder" type="Label" parent="Root/CenterContainer/Body" index="1"]
 visible = false
 layout_mode = 2
 text = "EcoCampus"
 label_settings = SubResource("LabelSettings_umtw8")
 
-[node name="Buttons" type="VBoxContainer" parent="Root/CenterContainer/VBoxContainer" index="2"]
+[node name="Buttons" type="VBoxContainer" parent="Root/CenterContainer/Body" index="2"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_constants/separation = 35
 
-[node name="Play" parent="Root/CenterContainer/VBoxContainer/Buttons" index="0" instance=ExtResource("2_5xhb2")]
+[node name="Play" parent="Root/CenterContainer/Body/Buttons" index="0" instance=ExtResource("2_5xhb2")]
 custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_pd6nm")
 
-[node name="OnPressedPlay" parent="Root/CenterContainer/VBoxContainer/Buttons/Play" index="1" node_paths=PackedStringArray("control") instance=ExtResource("5_k3spk")]
+[node name="OnPressedPlay" parent="Root/CenterContainer/Body/Buttons/Play" index="1" node_paths=PackedStringArray("control") instance=ExtResource("5_k3spk")]
 control = NodePath("..")
 
-[node name="Exit" parent="Root/CenterContainer/VBoxContainer/Buttons" index="1" instance=ExtResource("2_5xhb2")]
+[node name="Exit" parent="Root/CenterContainer/Body/Buttons" index="1" instance=ExtResource("2_5xhb2")]
 custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_ywn4y")
 
-[node name="OnPressedExit" parent="Root/CenterContainer/VBoxContainer/Buttons/Exit" index="1" node_paths=PackedStringArray("control") instance=ExtResource("6_f38ca")]
+[node name="OnPressedExit" parent="Root/CenterContainer/Body/Buttons/Exit" index="1" node_paths=PackedStringArray("control") instance=ExtResource("6_f38ca")]
 control = NodePath("..")

@@ -62,6 +62,18 @@ state_event = 1
 dont_ready_value = true
 node = NodePath("..")
 
+[node name="IfAssesmentExitedSetProperty" parent="VBoxContainer/HBoxContainer/CustomizeChracterIconButton" index="11" node_paths=PackedStringArray("node") instance=ExtResource("4_etnct")]
+property = "assesment_state"
+state_event = 1
+dont_ready_value = true
+node = NodePath("..")
+
+[node name="IfAssesmentEnteredSetProperty" parent="VBoxContainer/HBoxContainer/CustomizeChracterIconButton" index="12" node_paths=PackedStringArray("node") instance=ExtResource("4_etnct")]
+property = "assesment_state"
+dont_ready_value = true
+node = NodePath("..")
+new_value = "false"
+
 [node name="QuestsIconButton" parent="VBoxContainer/HBoxContainer" index="1" instance=ExtResource("3_d8ra2")]
 layout_mode = 2
 
@@ -129,6 +141,18 @@ property = "dialogue_state"
 state_event = 1
 ready_value = "true"
 node = NodePath("..")
+
+[node name="IfAssesmentExitedSetProperty" parent="VBoxContainer/HBoxContainer/SettingsIconButton" index="9" node_paths=PackedStringArray("node") instance=ExtResource("4_etnct")]
+property = "assesment_state"
+state_event = 1
+dont_ready_value = true
+node = NodePath("..")
+
+[node name="IfAssesmentEnteredSetProperty" parent="VBoxContainer/HBoxContainer/SettingsIconButton" index="10" node_paths=PackedStringArray("node") instance=ExtResource("4_etnct")]
+property = "assesment_state"
+dont_ready_value = true
+node = NodePath("..")
+new_value = "false"
 
 [node name="InfoIconButton" parent="VBoxContainer/HBoxContainer" index="5" instance=ExtResource("9_h4wh8")]
 layout_mode = 2

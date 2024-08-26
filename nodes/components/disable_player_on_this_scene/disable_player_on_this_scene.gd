@@ -3,7 +3,7 @@ class_name DisablePlayerOnThisScene
 
 var flag: bool = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#await PlayerManager.player_instanced
 	if flag: 
 		return

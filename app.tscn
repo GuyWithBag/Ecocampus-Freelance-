@@ -9,6 +9,4 @@ main_scene = NodePath("MainScene")
 
 [node name="MainScene" parent="." instance=ExtResource("2_i1vnj")]
 to_scene = "res://nodes/gui/main_menu/main_menu.tscn"
-transition = null
-middle_transition_end_condition = null
-dont_save_game_before_change = null
+dont_save_game_before_change = true

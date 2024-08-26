@@ -121,7 +121,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_baajt"]
 resource_name = "intro"
-length = 2.0
+length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -129,10 +129,10 @@ tracks/0/path = NodePath("Root/CenterContainer/Island/Path2D/PathFollow2D/Root:s
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.96667),
+"times": PackedFloat32Array(0, 1.26667),
 "transitions": PackedFloat32Array(-2, 1),
 "update": 0,
-"values": [Vector2(0.08, 0.08), Vector2(1, 1)]
+"values": [Vector2(0.08, 0.08), Vector2(0.9, 0.9)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -141,7 +141,7 @@ tracks/1/path = NodePath("Root/CenterContainer/Island/Path2D/PathFollow2D:progre
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.96667),
+"times": PackedFloat32Array(0, 1.26667),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [0.0, 1.0]
@@ -207,11 +207,16 @@ texture = SubResource("AtlasTexture_6f7ax")
 [node name="CON" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root/Island" index="0" instance=ExtResource("2_5f6v8")]
 layout_mode = 0
 offset_left = 153.0
-offset_top = 44.0
+offset_top = 84.0
 offset_right = 457.0
-offset_bottom = 348.0
+offset_bottom = 309.0
 texture_normal = SubResource("AtlasTexture_s445c")
 change_scene = SubResource("Resource_85384")
+map_name = "                   CON (College Of Nursing)"
+
+[node name="MapName" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root/Island/CON" index="4"]
+offset_right = 225.0
+text = "                   CON (College Of Nursing)"
 
 [node name="DIT" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root/Island" index="1" instance=ExtResource("2_5f6v8")]
 layout_mode = 0
@@ -221,6 +226,8 @@ offset_right = 583.0
 offset_bottom = 807.0
 texture_normal = SubResource("AtlasTexture_6sr2r")
 change_scene = SubResource("Resource_tncep")
+map_name = "DIT
+(Department Of Information Technology)"
 
 [node name="Gate" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root/Island" index="2" instance=ExtResource("2_5f6v8")]
 layout_mode = 0
@@ -230,6 +237,7 @@ offset_right = 287.0
 offset_bottom = 618.0
 texture_normal = SubResource("AtlasTexture_ixlmw")
 change_scene = SubResource("Resource_bteyx")
+map_name = "Gate 1"
 
 [node name="Library" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root/Island" index="3" instance=ExtResource("2_5f6v8")]
 layout_mode = 1
@@ -239,22 +247,24 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -182.5
-offset_top = -620.0
+offset_top = -501.0
 offset_right = 306.5
-offset_bottom = -131.0
+offset_bottom = -250.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = SubResource("AtlasTexture_wfi8a")
 change_scene = SubResource("Resource_vqtlx")
+map_name = "Library"
 
 [node name="Saluysoy" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root/Island" index="4" instance=ExtResource("2_5f6v8")]
 layout_mode = 0
 offset_left = 950.0
-offset_top = 139.0
+offset_top = 154.0
 offset_right = 1243.0
-offset_bottom = 432.0
+offset_bottom = 417.0
 texture_normal = SubResource("AtlasTexture_twbk7")
 change_scene = SubResource("Resource_lmf8a")
+map_name = "Saluysoy"
 
 [node name="TinyIsland" type="TextureRect" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root" index="1"]
 layout_mode = 1
@@ -286,6 +296,7 @@ grow_horizontal = 0
 grow_vertical = 0
 texture_normal = SubResource("AtlasTexture_h43h3")
 change_scene = SubResource("Resource_04iki")
+map_name = "House"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Root/CenterContainer/Island/Path2D/PathFollow2D/Root" index="2"]
 root_node = NodePath("../../../../../../..")
@@ -318,3 +329,5 @@ to_scene = "res://nodes/gui/main_menu/main_menu.tscn"
 
 [node name="OnChangeSceneAddToBackHistory" parent="ToMainMenu" index="0" node_paths=PackedStringArray("change_scene") instance=ExtResource("14_n4yax")]
 change_scene = NodePath("..")
+
+[editable path="Root/CenterContainer/Island/Path2D/PathFollow2D/Root/Island/CON"]

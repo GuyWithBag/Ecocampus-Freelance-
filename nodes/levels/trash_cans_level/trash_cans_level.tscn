@@ -30,6 +30,7 @@ offset_left = 76.0
 offset_top = 680.0
 offset_right = -1143.0
 offset_bottom = -61.0
+enabled = false
 initial_node_to_watch = NodePath("../../Entities/Living/PlayerNode")
 
 [node name="Root" type="Control" parent="GUIs" index="1"]
@@ -78,7 +79,6 @@ scale = Vector2(0.752704, 0.752704)
 
 [node name="BioDegradableTrashcan" parent="Entities/NonLiving/TrashCans" index="0" instance=ExtResource("4_7mhfn")]
 position = Vector2(-312, -38)
-goal_stack = 10
 
 [node name="NonBiodegradableTrashCan" parent="Entities/NonLiving/TrashCans" index="1" instance=ExtResource("5_4eos8")]
 position = Vector2(0, -38)
@@ -86,7 +86,6 @@ goal_stack = 5.0
 
 [node name="RecyclableTrashCan" parent="Entities/NonLiving/TrashCans" index="2" instance=ExtResource("6_4jqk0")]
 position = Vector2(319, -38)
-goal_stack = 10
 
 [node name="MasterSaveComponent" parent="WorldEventHandler" index="3" node_paths=PackedStringArray("id")]
 id = NodePath("../../Scripts/IDComponent")

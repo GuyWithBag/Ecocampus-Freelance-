@@ -12,3 +12,13 @@ class_name MapLocationButton
 		on_pressed_change_scene.change_scene = change_scene
 		
 @export var on_pressed_change_scene: OnPressedChangeScene
+
+@export_multiline var map_name: String: 
+	set(value): 
+		map_name = value
+		if !is_node_ready(): 
+			await ready
+			
+		map_name_label.text = map_name
+		
+@export var map_name_label: Label

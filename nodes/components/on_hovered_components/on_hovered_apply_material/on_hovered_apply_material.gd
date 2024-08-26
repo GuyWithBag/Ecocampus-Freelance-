@@ -2,6 +2,7 @@
 extends OnHoveredComponent
 class_name OnHoveredApplyMaterial
 
+@export var disabled: bool
 @export var material: Material: 
 	set(value): 
 		material = value
@@ -24,10 +25,14 @@ class_name OnHoveredApplyMaterial
 
 
 func _on_mouse_entered() -> void: 
+	if disabled: 
+		return
 	apply_material_to_node.apply = true
 
 
 func _on_mouse_exited() -> void: 
+	if disabled: 
+		return
 	apply_material_to_node.apply = false
 	
 	

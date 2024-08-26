@@ -202,6 +202,8 @@ new_value = "true"
 [node name="Bea" parent="Entities/Living" index="2" groups=["LadderDisable"] instance=ExtResource("10_mijeq")]
 position = Vector2(1296, 663)
 scale = Vector2(0.659454, 0.659454)
+on_tap_jump = true
+on_tap_face_player = true
 
 [node name="OnRoof" type="Node2D" parent="Entities/NonLiving" index="0"]
 

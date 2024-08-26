@@ -79,4 +79,3 @@ func _get_all_save_components(parent: Node) -> Array[FollowerSaveComponent]:
 			#continue
 		#var master_value = str(master_dict[master_property])
 		#node.set(master_property, master_value)
-

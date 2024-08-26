@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://jo332ksg44ul"]
+[gd_scene load_steps=12 format=3 uid="uid://jo332ksg44ul"]
 
 [ext_resource type="Script" path="res://nodes/singletons/globals/achievements_tracker/achievements_tracker.gd" id="1_y316a"]
 [ext_resource type="Resource" uid="uid://c8vv063c4vva5" path="res://resources/achievements_collection/achievements_collection.tres" id="2_25kpu"]
@@ -33,10 +33,16 @@ reset_after_minimum_hit = false
 rounded_off = false
 disabled = false
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_c88jr"]
 script = ExtResource("6_wi7ub")
 properties = PackedStringArray("points")
+save_properties_as_resource_path = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_5hiji"]
+script = ExtResource("6_wi7ub")
+properties = PackedStringArray("collection")
 save_properties_as_resource_path = PackedStringArray()
 
 [node name="AchievementsTracker" type="Node" node_paths=PackedStringArray("medals")]
@@ -54,5 +60,6 @@ data = SubResource("Resource_c88jr")
 [node name="MasterSaveComponent" parent="." node_paths=PackedStringArray("node") instance=ExtResource("5_oj2ya")]
 no_king = true
 node = NodePath("..")
+data = SubResource("Resource_5hiji")
 
 [editable path="MedalCounter"]

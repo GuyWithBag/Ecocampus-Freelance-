@@ -6,11 +6,12 @@
 [ext_resource type="Script" path="res://scripts/resources/item_model.gd" id="3_42del"]
 [ext_resource type="PackedScene" uid="uid://7gri71kaffvv" path="res://addons/audio_manager_and_plus/nodes/components/audio_manager_player/audio_manager_player.tscn" id="3_vdget"]
 
-[node name="InteractableEntityNode" node_paths=PackedStringArray("drop_audio") instance=ExtResource("1_olrtp")]
+[node name="InteractableEntityNode" node_paths=PackedStringArray("drop_audio", "drag_drop_area") instance=ExtResource("1_olrtp")]
 script = ExtResource("2_op4os")
 drop_audio = NodePath("Audio/DropAudio")
 allowed_items = Array[ExtResource("3_42del")]([])
 dont_take_item = false
+drag_drop_area = NodePath("MouseDragDropArea")
 
 [node name="MouseDragDropArea" parent="." index="0" node_paths=PackedStringArray("owner_node") instance=ExtResource("2_ooafw")]
 owner_node = NodePath("..")

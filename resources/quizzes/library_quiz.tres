@@ -8,7 +8,7 @@
 script = ExtResource("1_l1f2f")
 question = "Which of the following materials is biodegradable?"
 correct_answer = "Banana peel"
-wrong_answers = Array[String](["Glass", "Paper", "Aluminum"])
+wrong_answers = Array[String](["Glass", "Battery", "Aluminum"])
 reward_points = 1
 
 [sub_resource type="Resource" id="Resource_kjd4i"]

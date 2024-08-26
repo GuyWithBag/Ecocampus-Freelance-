@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogueArguments" load_steps=5 format=3 uid="uid://ctqraude2bfgs"]
+
+[ext_resource type="Resource" uid="uid://byaj1bas2wkaw" path="res://resources/dialogues/dialogues.dialogue" id="1_l5vfu"]
+[ext_resource type="Script" path="res://scripts/resources/entity.gd" id="2_h2mn0"]
+[ext_resource type="Resource" uid="uid://dpg6457rwx03a" path="res://resources/entity/player.tres" id="3_mjdfr"]
+[ext_resource type="Script" path="res://addons/dialogue_manager's_dialogue_gui_manager/scripts/arguments/dialogue_arguments.gd" id="4_iyfxb"]
+
+[resource]
+script = ExtResource("4_iyfxb")
+dialogue_gui = 0
+dialogue_resource = ExtResource("1_l5vfu")
+main_speakers = Array[ExtResource("2_h2mn0")]([ExtResource("3_mjdfr")])
+title = "item_is_disabled"
+extra_game_states = []
+title_variation = 0
+reset_when_title_variation_reached = false
+is_dialogue_game_state = true
+save_as_resource_path = true
+exclude_save_as_resource_path_on = Array[String]([])

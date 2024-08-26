@@ -1,17 +1,54 @@
-[gd_scene load_steps=5 format=3 uid="uid://5npqpm4ofnr"]
+[gd_scene load_steps=6 format=3 uid="uid://5npqpm4ofnr"]
 
 [ext_resource type="PackedScene" uid="uid://ba6uieidm61wl" path="res://nodes/gui/buttons/texture_button_plus/texture_button_plus.tscn" id="1_twwau"]
 [ext_resource type="Texture2D" uid="uid://b8aa610eimimt" path="res://assets/environment/white_circle.png" id="2_f62vw"]
 [ext_resource type="Script" path="res://nodes/gui/map_location_button/map_location_button.gd" id="3_nuy2u"]
 [ext_resource type="PackedScene" uid="uid://cu4fjldtsnbkh" path="res://nodes/gui_components/on_pressed_components/on_pressed_change_scene/on_pressed_change_scene.tscn" id="4_6vvlu"]
 
-[node name="MapLocationButton" node_paths=PackedStringArray("on_pressed_change_scene") instance=ExtResource("1_twwau")]
+[sub_resource type="LabelSettings" id="LabelSettings_86uwc"]
+font_size = 40
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 4)
+
+[node name="MapLocationButton" node_paths=PackedStringArray("on_pressed_change_scene", "map_name_label") instance=ExtResource("1_twwau")]
 offset_right = 221.0
 offset_bottom = 221.0
 texture_normal = ExtResource("2_f62vw")
 script = ExtResource("3_nuy2u")
 change_scene = null
 on_pressed_change_scene = NodePath("OnPressedChangeScene")
+map_name = ""
+map_name_label = NodePath("MapName")
+
+[node name="Label" parent="." index="1"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -259.5
+offset_top = 13.0
+offset_right = 246.5
+offset_bottom = 96.0
+grow_vertical = 0
 
 [node name="OnPressedChangeScene" parent="." index="2" node_paths=PackedStringArray("control") instance=ExtResource("4_6vvlu")]
 control = NodePath("..")
+
+[node name="MapName" type="Label" parent="." index="4"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -9.0
+offset_right = 167.0
+offset_bottom = 341.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_86uwc")
+horizontal_alignment = 1
+autowrap_mode = 3

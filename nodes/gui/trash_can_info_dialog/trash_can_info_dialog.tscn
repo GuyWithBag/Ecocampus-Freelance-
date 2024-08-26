@@ -29,7 +29,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer" index="0"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "Oops! IT looks like you’ve placed an item in the wrong trash bin. Remember, proper waste segragation is key to effective recycling and environmental conservation."
+text = "Oops! it looks like you’ve placed an item in the wrong trash bin. Remember, proper waste segragation is key to effective recycling and environmental conservation."
 autowrap_mode = 3
 
 [node name="OnVisibleThenScale" parent="." index="3" node_paths=PackedStringArray("node") instance=ExtResource("4_p8fsq")]

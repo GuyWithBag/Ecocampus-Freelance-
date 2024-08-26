@@ -5,6 +5,8 @@ class_name EntityNode
 signal starting_interact
 signal interacted
 
+@export var need_quest_before_enabled: EcoQuest
+@export var quest_carrier: NPCEntity
 
 @export var lock_size: bool: 
 	set(value): 
@@ -60,10 +62,19 @@ signal interacted
 			await ready
 		dialogue_starter.dialogue = dialogue
 		
-@export var dialogue_if_disabled: DialogueArguments
-
+		
+@export var dialogue_if_disabled: DialogueArguments: 
+	set(value): 
+		dialogue_if_disabled = value
+		if !is_node_ready(): 
+			await ready
+		if dialogue_if_disabled: 
+			dialogue_if_disabled.add_extra_game_states([self])
+		
+		
 @export var quiz: Quiz
 @export var quest: EcoQuest
+
 @export var disable_after_interact: bool
 @export var disable_tap_hit_box_if_disabled: bool = true: 
 	set(value): 
@@ -72,6 +83,8 @@ signal interacted
 			await ready
 		if disabled && !disable_tap_hit_box_if_disabled: 
 			disable_tap_hit_box(false)
+		elif disabled && disable_tap_hit_box_if_disabled: 
+			disable_tap_hit_box(true)
 		
 		
 @export var disabled: bool: 
@@ -101,6 +114,8 @@ signal interacted
 		
 @export var on_tap_jump: bool
 @export var on_tap_face_player: bool
+#@export var have_idle_animation: bool
+#@export var stop_idle_animation_after_quest: bool
 
 @export_group("Dependencies")
 @export var state_chart: StateChart
@@ -121,12 +136,29 @@ signal interacted
 @export var two_point_5d_node_simulator: TwoPoint5DNodeSimulator
 @export var dialogue_starter_for_disabled: DialogueStarter
 @export var animation_player: AnimationPlayer
-
+@export var tap_cooldown_timer: Timer
 #var interacted_count: int = 0
+
 
 func _ready() -> void: 
 	#GameManager.playing_state.state_entered.connect(_on_playing_state_entered)
-	pass
+	if Engine.is_editor_hint(): 
+		return
+		
+	if need_quest_before_enabled: 
+		if ExtendedQuestSystem.is_quest_active(quest): 
+			disabled = false
+		else: 
+			disabled = true
+			ExtendedQuestSystem.new_available_quest.connect(
+				_on_new_available_quest
+			)
+		
+	
+func _on_new_available_quest(_quest: Quest) -> void: 
+	if _quest.id == need_quest_before_enabled.id: 
+		disabled = false
+		ExtendedQuestSystem.new_available_quest.disconnect(_on_new_available_quest)
 	#
 	
 ## FIXME: BANDAID SOLUTION!
@@ -157,6 +189,7 @@ func _on_interact() -> void:
 	if disabled || !visible: 
 		if dialogue_if_disabled: 
 			dialogue_starter_for_disabled.dialogue = dialogue_if_disabled
+			dialogue_if_disabled.extra_game_states = [self]
 			dialogue_starter_for_disabled.start()
 		return
 	#interacted_count += 1
@@ -189,6 +222,7 @@ func _on_interact() -> void:
 	interacted.emit()
 	if disable_after_interact: 
 		disabled = true
+	GlobalData.achievements_tracker.update_victory()
 
 
 func show_interact_dialog(description: BaseLabelText) -> void: 
@@ -216,7 +250,10 @@ func show_interact_dialog(description: BaseLabelText) -> void:
 		dialog.ok_button.button_audio_player.disabled = true
 
 
-func _on_tap_hit_box_pressed() -> void:
+func _on_tap_hit_box_pressed() -> void: 
+	if !tap_cooldown_timer.is_stopped(): 
+		return
+		
 	if !PlayerManager.player: 
 		return
 		
@@ -253,6 +290,8 @@ func _on_tap_hit_box_pressed() -> void:
 		
 	if on_tap_face_player: 
 		face_player()
+		
+	tap_cooldown_timer.start()
 
 
 func jump_animation() -> void: 
@@ -261,8 +300,8 @@ func jump_animation() -> void:
 	var tween: Tween = tween_arg.create_tween(get_tree())
 	
 	var orig_pos: Vector2 = default_entity_sprite.position
-	tween.tween_property(default_entity_sprite, "position:y", orig_pos.y + -75 * two_point_5d_node_simulator.get_space_simulator().get_space_scale(default_entity_sprite.global_position, walk.base_values.values.speed), 0.3)
-	tween.tween_property(default_entity_sprite, "position:y", orig_pos.y, 0.3)
+	tween.tween_property(default_entity_sprite, "position:y", orig_pos.y + -75 * two_point_5d_node_simulator.get_space_simulator().get_space_scale(default_entity_sprite.global_position, walk.base_values.values.speed), 0.2)
+	tween.tween_property(default_entity_sprite, "position:y", orig_pos.y, 0.2)
 	
 	tween.play()
 

@@ -26,8 +26,10 @@ _data = {
 "walk_right": SubResource("Animation_hhrdu")
 }
 
-[node name="NPCNode" instance=ExtResource("1_4vfvx")]
+[node name="NPCNode" node_paths=PackedStringArray("idle_animation_timer") instance=ExtResource("1_4vfvx")]
 script = ExtResource("2_1hpoc")
+idle_animate_if_quest_incomplete = true
+idle_animation_timer = NodePath("IdleAnimationTimer")
 on_tap_jump = true
 on_tap_face_player = true
 
@@ -103,3 +105,5 @@ scale = Vector2(0.229306, 0.168255)
 libraries = {
 "": SubResource("AnimationLibrary_us68v")
 }
+
+[node name="IdleAnimationTimer" type="Timer" parent="." index="9"]

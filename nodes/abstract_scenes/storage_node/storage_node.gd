@@ -14,7 +14,7 @@ func _on_mouse_drag_drop_area_dropped(drag_data: Dictionary) -> void:
 	drop_audio.play()
 	InventoryGUI.this().update()
 	#printerr(inventory.get_total_stack())
-	
+	#printerr("dropped")
 	# If this storage node's inventory has a total stack of 10, then it will add to the player data the +10
 	if inventory.get_total_stack() == goal_stack: 
 		PlayerManager.player_data.trash_can_items += goal_stack
@@ -28,6 +28,7 @@ func mouse_drag_can_drop_condition(drag_data: Dictionary) -> bool:
 		item_accepted.emit(item)
 	else: 
 		item_rejected.emit(item)
+	#printerr("can")
 	return result
 	
 	

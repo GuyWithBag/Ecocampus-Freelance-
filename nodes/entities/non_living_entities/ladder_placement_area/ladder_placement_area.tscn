@@ -17,6 +17,7 @@ script = ExtResource("6_84eyk")
 items = Array[ExtResource("5_vgmex")]([])
 max_items = -1
 save_as_resource_path = false
+exclude_save_as_resource_path_on = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_jlujb"]
 script = ExtResource("7_nyyme")
@@ -50,8 +51,10 @@ items_accesible_when_climbed = []
 ground_marker = NodePath("Positions/Ground")
 top_marker = NodePath("Positions/Top")
 allowed_items = Array[ExtResource("3_lwdv1")]([ExtResource("4_fe7vi")])
+hide_when_dropped = false
 inventory = SubResource("Resource_6sce4")
 interact_description = SubResource("Resource_jlujb")
+disable_tap_hit_box_if_disabled = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseDragDropArea" index="0"]
 position = Vector2(-148, -372)

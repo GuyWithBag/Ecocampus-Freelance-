@@ -5,6 +5,7 @@
 
 [node name="RecyclableTrashCan" instance=ExtResource("1_mxl8k")]
 can_take = 2
+goal_stack = 10
 
 [node name="CollisionShape2D" parent="MouseDragDropArea" index="0"]
 position = Vector2(1, -193.5)

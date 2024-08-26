@@ -13,23 +13,28 @@ var has_ladder: bool:
 		has_ladder = value
 		if !is_node_ready(): 
 			await ready
+			
 		if value: 
 			default_entity_sprite.show()
 			tap_hit_box.show()
 			disabled = false
+			#print(disabled)
 			is_item_accepted = true
+			show()
 		else: 
 			default_entity_sprite.hide()
 			tap_hit_box.hide()
 			disable_items(true)
 			disabled = true
-			
+			hide()
 			
 func _ready() -> void: 
+	super._ready()
 	if Engine.is_editor_hint():
 		return
 	has_ladder = false
 	#set_physics_process(false)
+
 
 func _on_item_accepted(_item_stack: ItemStack) -> void:
 	#default_entity_sprite.show()
@@ -79,6 +84,7 @@ func move_up() -> void:
 			player.state_chart.send_event("walk")
 			player.animation_player.play("walk_left")
 			ToMapPickerIconButton.this().visible = false
+			SettingsIconButton.this().visible = false
 			#main_camera.adjust_offset = Vector2.ZERO
 			
 			player.animate_y_direction_move = false
@@ -139,6 +145,7 @@ func move_down() -> void:
 				elif node is NPCNode: 
 					node.disabled = false
 			ToMapPickerIconButton.this().visible = true
+			SettingsIconButton.this().visible = true
 				
 	, CONNECT_ONE_SHOT
 	)
@@ -185,5 +192,5 @@ func _process(delta: float) -> void:
 	else: 
 		GetMousePositionArea.this().visible = true
 	
-	
+	#printerr(visible)
 	

@@ -27,7 +27,7 @@ reward_points = 1
 
 [sub_resource type="Resource" id="Resource_ovh5n"]
 script = ExtResource("1_tsia6")
-question = "Why is it important to proper waste disposal?"
+question = "Why is it important to dispose waste properly?"
 correct_answer = "It reduces pollution and conserves resources."
 wrong_answers = Array[String](["It has no impact on the environment.", "It increases landfill space.", "It encourages illegal dumping."])
 reward_points = 1

@@ -118,3 +118,15 @@ property = "dialogue_state"
 state_event = 1
 dont_ready_value = true
 node = NodePath("..")
+
+[node name="IfAssesmentExitedSetProperty" parent="." index="2" node_paths=PackedStringArray("node") instance=ExtResource("5_1rerd")]
+property = "assesment_state"
+state_event = 1
+dont_ready_value = true
+node = NodePath("..")
+
+[node name="IfAssesmentEnteredSetProperty" parent="." index="3" node_paths=PackedStringArray("node") instance=ExtResource("5_1rerd")]
+property = "assesment_state"
+dont_ready_value = true
+node = NodePath("..")
+new_value = "false"

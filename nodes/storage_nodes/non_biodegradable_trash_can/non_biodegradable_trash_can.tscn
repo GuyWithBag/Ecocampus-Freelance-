@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://byxbeilv2v4ug" path="res://assets/trash_cans/trashcan_nonbio.png" id="2_b1abr"]
 
 [node name="NonBiodegradableTrashCan" instance=ExtResource("1_l3mov")]
+goal_stack = 10
 
 [node name="CollisionShape2D" parent="MouseDragDropArea" index="0"]
 position = Vector2(2.5, -195)

@@ -8,7 +8,7 @@
 atlas = ExtResource("2_lxa3n")
 region = Rect2(13, 50, 238, 247)
 
-[node name="SettingsIconButton" node_paths=PackedStringArray("icon") instance=ExtResource("1_ijr7j")]
+[node name="SettingsIconButton" node_paths=PackedStringArray("icon") groups=["SettingsIconButton"] instance=ExtResource("1_ijr7j")]
 script = ExtResource("3_jw167")
 icon = NodePath("Icon")
 

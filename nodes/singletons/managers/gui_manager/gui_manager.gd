@@ -11,7 +11,7 @@ extends BaseGUIManager
 
 @export var player_hud: PlayerHUD
 @export var item_obtained_screen: ItemObtainedScreen
-@export var animation_player: AnimationPlayer
+@export var intro_animation: Node
 
 func reset() -> void: 
 	GUIManager.set_gui_active(quiz_attempt_screen, false)

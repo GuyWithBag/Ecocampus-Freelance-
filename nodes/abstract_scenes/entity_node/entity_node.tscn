@@ -31,7 +31,7 @@ script = ExtResource("18_pu4wv")
 properties = PackedStringArray("inventory", "data", "quiz", "dialogue", "global_position", "global_scale", "disabled", "visible", "node_variety_index", "interacted_count")
 save_properties_as_resource_path = PackedStringArray()
 
-[node name="EntityNode" type="CharacterBody2D" node_paths=PackedStringArray("state_chart", "path_find", "walk", "hitbox", "node_variety_manager", "interact_audio_player", "interact_dialog_position", "dialogue_starter", "dialogue_response_handler", "call_world_event_component", "ready_unique_resource", "master_save_component", "tap_hit_box", "tap_hit_box_root", "default_entity_sprite", "two_point_5d_node_simulator", "dialogue_starter_for_disabled") groups=["Entity"]]
+[node name="EntityNode" type="CharacterBody2D" node_paths=PackedStringArray("state_chart", "path_find", "walk", "hitbox", "node_variety_manager", "interact_audio_player", "interact_dialog_position", "dialogue_starter", "dialogue_response_handler", "call_world_event_component", "ready_unique_resource", "master_save_component", "tap_hit_box", "tap_hit_box_root", "default_entity_sprite", "two_point_5d_node_simulator", "dialogue_starter_for_disabled", "tap_cooldown_timer") groups=["Entity"]]
 script = ExtResource("1_ljx5x")
 state_chart = NodePath("StateChart")
 path_find = NodePath("Components/Movement/PathFindMovementComponent")
@@ -50,6 +50,7 @@ tap_hit_box_root = NodePath("CanvasLayer/Root")
 default_entity_sprite = NodePath("Sprites/EntitySprite")
 two_point_5d_node_simulator = NodePath("Components/TwoPoint5DNodeSimulator")
 dialogue_starter_for_disabled = NodePath("Components/DialogueStarterForDisabled")
+tap_cooldown_timer = NodePath("TapCooldown")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 3
@@ -225,6 +226,10 @@ use_parent_material = true
 
 [node name="InteractDialogPosition" type="Marker2D" parent="."]
 position = Vector2(-43, -98)
+
+[node name="TapCooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="pressed" from="CanvasLayer/Root/TapHitBox" to="." method="_on_tap_hit_box_pressed"]
 [connection signal="responded" from="Components/DialogueResponseHandler" to="." method="_on_dialogue_response_handler_responded"]
