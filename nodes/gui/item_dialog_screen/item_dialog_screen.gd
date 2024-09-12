@@ -24,9 +24,10 @@ func display(item: ItemModel) -> void:
 #[font_size=28][b]Type:[/b] %s[/font_size]
 #[font_size=28][b]Environmental Impact:[/b] %s[/font_size]"
 	#
+	
 	rich_text_description_format.texts = [
 		item.name, 
-		GlobalVariables.get_enum_name(ItemEntity.Type, item.type).to_pascal_case(), 
+		GlobalVariables.get_enum_name(ItemModel.Type, item.type).to_pascal_case(), 
 		item.description
 	] as Array[String]
 	
