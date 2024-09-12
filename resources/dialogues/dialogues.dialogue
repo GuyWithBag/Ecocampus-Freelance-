@@ -80,7 +80,7 @@ do dialogue_response_handler.respond("start_quest")
 
 ~ con_quest_completed
 {{PlayerManager.player.data.custom_name}}: Good day teacher! I did it, the challenge is complete
-Professor Cruz: Excellent work, John! You handled the challenge responsibly and efficiently. I'm proud of you.
+Professor Cruz: Excellent work, You handled the challenge responsibly and efficiently. I'm proud of you.
 {{PlayerManager.player.data.custom_name}}: Thank you!
 Professor Cruz: Let's recall what you've learned from your journey through the Eco Quiz.
 do dialogue_response_handler.respond("start_quiz")
@@ -103,7 +103,7 @@ do dialogue_response_handler.respond("start_quest")
 {{PlayerManager.player.data.custom_name}}: Good day teacher! I did it, the challenge is complete
 Professor Luna: Well done! How did it go?
 {{PlayerManager.player.data.custom_name}}:  It went smoothly. I remembered to turn the faucet clockwise to shut off the water, and then I made sure all the lights were off in certain areas of the school.
-Professor Luna: Excellent work, John! You handled the challenge responsibly and efficiently. I'm proud of you.
+Professor Luna: Excellent work, You handled the challenge responsibly and efficiently. I'm proud of you.
 {{PlayerManager.player.data.custom_name}}: Thank you!
 Professor Luna: Let's recall what you've learned from your journey through the Eco Quiz. 
 do dialogue_response_handler.respond("start_quiz")
@@ -149,7 +149,7 @@ do dialogue_response_handler.respond("start_quest")
 
 ~ saluysuy_quest_completed
 {{PlayerManager.player.data.custom_name}}: Good day teacher! I did it, the challenge is complete
-Doctor Madrigal: Excellent work, John! You handled the challenge responsibly and efficiently. I'm proud of you.
+Doctor Madrigal: Excellent work, You handled the challenge responsibly and efficiently. I'm proud of you.
 {{PlayerManager.player.data.custom_name}}: Thank you!
 Doctor Madrigal: Let's recall what you've learned from your journey through the Eco Quiz.
 do dialogue_response_handler.respond("start_quiz")
